@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" media="screen" href="css/design.css">
+
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
 
 </head>
@@ -19,7 +20,7 @@
             <a id="login" class="btn btn-primary">Login</a>
             <a id="register" class="btn btn-success">Register</a>
             <!-- login div -->
-            <div id="loginDiv" class="well">
+            <div id="loginDiv" ng-show={{x}} class="well">
                 <h1>Login Form</h1>
                 <h2 id="message"></h2>
                 <div class="form-group">
@@ -35,7 +36,7 @@
                 </div>
             </div>
             <!-- register Div -->
-            <div id="regDiv" class="well">
+            <div id="regDiv" ng-show="" class="well">
                 <h1>Register form</h1>
                 <div class="form-group">
                     <label for="">Userid</label>

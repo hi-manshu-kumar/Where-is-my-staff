@@ -1,0 +1,22 @@
+{
+  "name": "where-is-my-staff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hi-manshu-kumar/Where-is-my-staff.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hi-manshu-kumar/Where-is-my-staff/issues"
+  },
+  "homepage": "https://github.com/hi-manshu-kumar/Where-is-my-staff#readme",
+  "dependencies": {
+    "angular": "^1.7.2"
+  }
+}
