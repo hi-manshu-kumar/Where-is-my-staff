@@ -8,19 +8,22 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" media="screen" href="css/design.css">
-
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-
+    <!-- <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script> -->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/factory/userFactory.js"></script>
+    <script src="js/controllers/userController.js"></script>
 </head>
 
-<body>
+<body ng-app="myApp">
        
-        <div class="container tile center ">
+        <div class="container tile center " ng-controller="userCtrl"  >
             <br>
             <a id="login" class="btn btn-primary">Login</a>
             <a id="register" class="btn btn-success">Register</a>
             <!-- login div -->
-            <div id="loginDiv" ng-show={{x}} class="well">
+            <div id="loginDiv" class="well">
+                {{x}}
                 <h1>Login Form</h1>
                 <h2 id="message"></h2>
                 <div class="form-group">

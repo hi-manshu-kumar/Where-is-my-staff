@@ -1,3 +1,3 @@
-app.constant('userController',function($scope,calcfactory){
-
+myApp.controller('userCtrl',function($scope,userfactory){
+    $scope.x=false;
 })
