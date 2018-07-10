@@ -2,10 +2,6 @@ input.ng-invalid {
     border-color: red;
 }
 
-input.ng-untouched{
-    border: none;
-}
-
 input.ng-valid {
     border-color: green;
 }
