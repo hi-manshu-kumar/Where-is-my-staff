@@ -25,7 +25,7 @@
             <a id="register" class="btn btn-success" ng-click="showReg()">Register</a>
             <br><br>
             <!-- login div -->
-            <div id="loginDiv" ng-model="isShowHideLog" ng-show="isShowHideLog" class="well">
+            <div id="loginDiv" ng-show="isShowHideLog" class="well">
                 <h1>Login Form</h1>
               
                 <form name="loginform" ng-submit="validateLog(loginform.$valid)" novalidate>
@@ -48,7 +48,7 @@
             </form>
             </div>
             <!-- register Div -->
-            <div id="regDiv" ng-model="isShowHideReg" ng-show="isShowHideReg" class="well">
+            <div id="regDiv" ng-show="isShowHideReg" class="well">
                 <h1>Register form</h1>
 
                 <form name="regform" ng-submit="validateReg(regform.$valid)" novalidate>
