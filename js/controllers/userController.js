@@ -42,6 +42,7 @@ myApp.controller('userCtrl',['$scope','$rootScope','$firebaseArray','userfactory
     var rootRef = firebase.database().ref();    
     var userRef = rootRef.child('users');
     $scope.users=$firebaseArray(userRef);   
+    users=$firebaseArray(userRef);
     // $scope.user = $firebaseArray(userRef);
     // $scope.user = "";
     console.log($firebaseArray(userRef));
@@ -49,7 +50,7 @@ myApp.controller('userCtrl',['$scope','$rootScope','$firebaseArray','userfactory
         console.log('Adding user');
         
         $scope.users=$firebaseArray(userRef);
-        $scope.enable = "false"
+        $scope.enable = "false";
         $scope.users.$add({
             name: $scope.name,
             email:$scope.mail,
@@ -66,5 +67,15 @@ myApp.controller('userCtrl',['$scope','$rootScope','$firebaseArray','userfactory
             $scope.userid = "";
             $scope.type = "";
         });
+    };
+    //------------------------------admin.html save data-------------------------
+    $scope.saveData = function(k){
+        // userRef.$save
+        // user.$save(user.enable).then
+        users.$save(k);
+        // users.$save(user).then(function() {
+        //     // ref.key() === list[2].$id; // true
+        //     console.log("Added changes to database");
+        //   });
     };
 }])

@@ -6,9 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css//adminStyle.css">
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <!-- <script src="node_modules/firebase/firebase-database.js"></script>
+    <script src="node_modules/angularfire/dist/angularfire.js"></script> -->
     <script src="js/app.js"></script>
     <script src="js/config/config.js"></script>
     <script src="js/factory/userFactory.js"></script>
@@ -27,6 +30,7 @@
                         <th>Type</th>
                         <th>Enable</th>
                         <th>edit</th>
+                        <th>Delete Record</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,10 +40,13 @@
                         <td>{{user.userid}}</td>
                         <td>{{user.type}}</td>
                         <td>{{user.enable}}</td>
-                        <td><input type="checkbox" name="x" value="{{user.enable}}" ng-model="user.enable"></td>
+                        <td><input type="checkbox" name="x" value="{{user.enable}}" ng-model="user.enable"  ng-change="users.$save(user)"></td>
+                        <!-- users.$save(user) -->
+                        <td><button class="btn btn-danger" ng-click=users.$remove(user)>Delete</button></td>
                     </tr>
                 </tbody>
             </table>
+            <button class="right btn btn-success" ng-click="saveData(user)">Save Data</button>
         </div>
     </div>
     <script>
