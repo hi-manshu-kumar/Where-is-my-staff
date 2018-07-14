@@ -51,7 +51,7 @@
             <div id="regDiv" ng-model="isShowHideReg" ng-show="isShowHideReg" class="well">
                 <h1>Register form</h1>
 
-                <form name="regform" ng-submit="validateReg(regform.$valid)" novalidate>
+                <form name="regform" ng-submit="addUser()"  novalidate>
                 <div class="form-group">
                     <label for="">Userid</label>
                     <input type="text" placeholder="Enter userid here" class="form-control" id="userid" ng-model="userid" name="userid" required>
@@ -59,7 +59,9 @@
                 </div>
                 <div class="form-group">
                     <label for="">Password</label>
-                    <input type="password" placeholder="Enter Password here" class="form-control" id="password" name="password" ng-model="password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$">
+
+                    <input type="password" placeholder="Enter Password here" class="form-control" id="password" name="password" ng-model="pwd" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$">
+
                     <span ng-show="regform.password.$touched && regform.password.$invalid && regform.password.$error['required']" class="error">Password can't be empty</span>
                     <span ng-show="regform.password.$touched && regform.password.$invalid && regform.password.$error['pattern']" class="error">Password must be of minimum eight characters,atleast one uppercase,one lowercase character and one number</span>
                 </div>
@@ -77,7 +79,9 @@
                 </div>
                 <div class="form-group">
                     <label for="">E-mail</label>
-                    <input type="email" placeholder="Enter email here" class="form-control" id="regEmail" name="regEmail" pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" ng-model="regEmail" required>
+
+                    <input type="email" placeholder="Enter email here" class="form-control" id="regEmail" name="regEmail" pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" ng-model="mail" required>
+
                     <span ng-show="regform.regEmail.$touched && regform.regEmail.$invalid && regform.regEmail.$error['required']" class="error">Email can't be empty</span>
                     <span ng-show="regform.regEmail.$touched && regform.regEmail.$dirty && regform.regEmail.$invalid && regform.regEmail.$error['email']" class="error">Email is not correct </span>
                     <span ng-show="regform.regEmail.$touched && regform.regEmail.$invalid && regform.regEmail.$error['pattern']" class="error">Email has invalid format</span>
