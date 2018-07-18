@@ -96,28 +96,30 @@ angular.module('whereApp')
     
     var pr = dbOperations.match(userid, password)
     $localStorage.userid=userid;
+    $scope.username=userid;
     console.log($localStorage.userid,userid);
     
     pr.then(data => {
         
-        // $location.href = "index.html";
+        $location.path ('/admin');
         console.log("inside then",data.type);
         $localStorage.type = data.type;
-        console.log({$localStorage.type},{data.type});
+        
+        console.log("data is",$localStorage.type,data.type);
     }).catch(err => {
         console.log(err);
         // document.querySelector("#message").innerHTML = "Invalid User id or password";
     });
-      
-    // var promise = calcfactory.doAjax();
-    // console.log("Controller Rec the Fake Object ",promise);
     
-    // promise.then(response=>{
-    //     $scope.mydata = response;
-    // },err=>{
-    //     $scope.err = err;
-    // })
   }; 
+
+  $scope.showDetails = function() {
+      $scope.msg="inside show details";
+      $scope.empName = $scope.user.name;
+      $scope.empEmail = $scope.user.email;
+      $scope.empUserid = $scope.user.userid;
+      $scope.empType = $scope.user.type;
+  }
 
 }]);
   

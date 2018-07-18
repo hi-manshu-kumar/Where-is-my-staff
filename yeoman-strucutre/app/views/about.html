@@ -5,7 +5,7 @@
     <br><br>
     <!-- login div -->
     <div id="loginDiv" ng-model="isShowHideLog" ng-show="isShowHideLog" class="well">
-        <h1>Login Form</h1>
+        <h1>Login Form {{username}}{{localStorage.type}}</h1>
       
         <form name="loginform" ng-submit="callAjax()" novalidate>
       

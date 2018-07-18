@@ -20,8 +20,13 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
+      .when('/login', {
         templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
+      })
+      .when('/admin', {
+        templateUrl: 'views/adminview.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
