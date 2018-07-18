@@ -15,4 +15,4 @@ myApp.factory('userfactory',function($http,$q){
     }
     // object.
     return object;
-});
+})

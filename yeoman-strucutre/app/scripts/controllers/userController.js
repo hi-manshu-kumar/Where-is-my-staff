@@ -1,6 +1,38 @@
-myAdmin.controller('adminCtrl',['$scope','$rootScope','$firebaseArray','adminfactory',function($scope,$rootScope,$firebaseArray,adminfactory){
+myApp.controller('userCtrl',['$scope','$rootScope','$firebaseArray','userfactory',function($scope,$rootScope,$firebaseArray,userfactory){
 
-       
+    $scope.isShowHideLog=false;
+    var x =$scope.isShowHideLog;
+    $scope.isShowHideReg=false;
+    var y =$scope.isShowHideReg;
+    // --------------------------show/hide login------------------
+    $scope.showLogin = function(){
+        console.log(
+            userfactory.showLogin(x,y).isShowHide 
+         , userfactory.showLogin().isShowHideReg
+    );  
+        x=false;
+        y=true;
+         x = userfactory.showLogin(x,y).isShowHide;
+         y = userfactory.showLogin(x,y).isShowHideReg;
+        console.log({x,y});
+        $scope.isShowHideLog = x;
+        $scope.isShowHideReg = y;        
+    };
+    // --------------------------show/hide register-----------------
+    $scope.showReg = function(){
+        console.log(
+            userfactory.showLogin(x,y).isShowHide 
+        // , userfactory.showLogin().isShowHideReg
+    );  
+        x = true;
+        y=true;
+        x = userfactory.showReg(x,y).x;
+        y = userfactory.showReg(x,y).y;
+        console.log({x,y}); 
+        $scope.isShowHideLog = x; 
+        $scope.isShowHideReg = y;       
+    };
+    
     //-------------------------firebase code here--------------------
     // var ref = new Firebase('https://console.firebase.google.com/project/where-is-my-staff-95951/database/where-is-my-staff-95951/data');
     // $scope.contacts = $firebaseArray(ref);
