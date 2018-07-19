@@ -112,13 +112,16 @@ angular.module('whereApp')
     });
     
   }; 
-
-  $scope.showDetails = function() {
+   //--------------------- employee details here--------------------------------
+  $scope.showDetails = function(a,b) {
+      console.log(a,b);
+      console.log(a.$id,users.$getRecord(a.$id));
+      
       $scope.msg="inside show details";
-      $scope.empName = $scope.user.name;
-      $scope.empEmail = $scope.user.email;
-      $scope.empUserid = $scope.user.userid;
-      $scope.empType = $scope.user.type;
+      $scope.empName = users.$getRecord(a.$id).name;
+      $scope.empEmail = users.$getRecord(a.$id).email;
+      $scope.empUserid = users.$getRecord(a.$id).userid;
+      $scope.empType = users.$getRecord(a.$id).type;
   }
 
 }]);

@@ -15,7 +15,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="user in users">
-                        <td ng-click="showDetails()">{{user.name}}</td>
+                        <td ng-click="showDetails(user,users)">{{user.name}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.userid}}</td>
                         <td>{{user.type}}</td>
