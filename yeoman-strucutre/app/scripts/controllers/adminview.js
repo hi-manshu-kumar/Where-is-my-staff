@@ -28,7 +28,7 @@ angular.module('whereApp')
     // console.log($firebaseArray(userRef));
     
     //------------------------------admin.html save data-------------------------
-    $scope.saveData = function(k){
+    $scope.saveData = function(a,b){
         // userRef.$save
         // user.$save(user.enable).then
       //   users.$save(k);
@@ -36,17 +36,34 @@ angular.module('whereApp')
         //     // ref.key() === list[2].$id; // true
         //     console.log("Added changes to database");
         //   });
-        
-      // for (let user in k) {
-      //     console.log("user is", users.$getRecord(user.$id));
-      // }
+        console.log(users);
+        console.log({a});
+        console.log({b});
+        let c =0;
+
+        console.log(users[0]);
+        for (let user of b){
+            console.log(user.enable,c);
+            
+            console.log(c);
+
+            if(user.enable=="false" || user.enable==false)
+            {
+                console.log(user.enable,c);
+                users.$remove(c);
+            }
+            c++;
+        }
+    //   for (let user in b) {
+    //       console.log("user is" ,b[1].email);
+    //   }
   
     };
 
      //--------------------- employee details here--------------------------------
-    $scope.showDetails = function(a,b) {
+    $scope.showDetails = (a,b) => {
         console.log(a,b);
-        console.log(a.$id,users.$getRecord(a.$id));
+        // console.log(a.$id,users.$getRecord(a.$id));
         
         $scope.msg="inside show details";
         $scope.empName = users.$getRecord(a.$id).name;
@@ -54,4 +71,6 @@ angular.module('whereApp')
         $scope.empUserid = users.$getRecord(a.$id).userid;
         $scope.empType = users.$getRecord(a.$id).type;
     }
+    // -------------------------Assign Task here---------------------------------
+    $scope.date = new Date();
   }]);

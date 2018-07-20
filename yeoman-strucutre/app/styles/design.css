@@ -13,3 +13,13 @@ input.ng-untouched{
 .error {
     color: red;
 }
+
+.right{
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
