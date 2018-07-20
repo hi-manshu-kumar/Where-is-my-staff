@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc function
- * @name whereApp.controller:AboutCtrl
+ * @name whereApp.controller:LoginCtrl
  * @description
  * # AboutCtrl
  * Controller of the whereApp
  *  .controller('AboutCtrl', function () {
  */
 angular.module('whereApp')
-  .controller('AboutCtrl',['$scope','$firebaseArray','userfactory','$localStorage','$location',function($scope,$firebaseArray,userfactory,$localStorage,$location){
+  .controller('LoginCtrl',['$scope','$firebaseArray','loginfactory','$localStorage','$location',function($scope,$firebaseArray,loginfactory,$localStorage,$location){
 
   $scope.isShowHideLog=false;
   var x =$scope.isShowHideLog;
@@ -18,13 +18,13 @@ angular.module('whereApp')
   // --------------------------show/hide login------------------
   $scope.showLogin = function(){
       console.log(
-          userfactory.showLogin(x,y).isShowHide 
-       , userfactory.showLogin().isShowHideReg
+          loginfactory.showLogin(x,y).isShowHide 
+       , loginfactory.showLogin().isShowHideReg
         );  
       x=false;
       y=true;
-       x = userfactory.showLogin(x,y).isShowHide;
-       y = userfactory.showLogin(x,y).isShowHideReg;
+       x = loginfactory.showLogin(x,y).isShowHide;
+       y = loginfactory.showLogin(x,y).isShowHideReg;
       console.log({x,y});
       $scope.isShowHideLog = x;
       $scope.isShowHideReg = y;        
@@ -32,13 +32,13 @@ angular.module('whereApp')
   // --------------------------show/hide register-----------------
   $scope.showReg = function(){
       console.log(
-          userfactory.showLogin(x,y).isShowHide 
-      // , userfactory.showLogin().isShowHideReg
+          loginfactory.showLogin(x,y).isShowHide 
+      // , loginfactory.showLogin().isShowHideReg
         );  
       x = true;
       y=true;
-      x = userfactory.showReg(x,y).x;
-      y = userfactory.showReg(x,y).y;
+      x = loginfactory.showReg(x,y).x;
+      y = loginfactory.showReg(x,y).y;
       console.log({x,y}); 
       $scope.isShowHideLog = x; 
       $scope.isShowHideReg = y;       
@@ -53,7 +53,7 @@ angular.module('whereApp')
   var rootRef = firebase.database().ref();    
   var userRef = rootRef.child('users');
   $scope.users=$firebaseArray(userRef);   
-  users=$firebaseArray(userRef);
+  const users=$firebaseArray(userRef);
   // $scope.user = $firebaseArray(userRef);
   // $scope.user = "";
   console.log($firebaseArray(userRef));
@@ -83,11 +83,16 @@ angular.module('whereApp')
   $scope.saveData = function(k){
       // userRef.$save
       // user.$save(user.enable).then
-      users.$save(k);
+    //   users.$save(k);
       // users.$save(user).then(function() {
       //     // ref.key() === list[2].$id; // true
       //     console.log("Added changes to database");
       //   });
+      
+    // for (let user in k) {
+    //     console.log("user is", users.$getRecord(user.$id));
+    // }
+
   };
   //================================login verification========================
   $scope.callAjax = function() {
@@ -124,24 +129,6 @@ angular.module('whereApp')
       $scope.empType = users.$getRecord(a.$id).type;
   }
 
-  angular.extend($scope, {
-        osloCenter: {
-            lat: 59.91,
-            lng: 10.75,
-            zoom: 12
-        },
-        markers: {
-            osloMarker: {
-                lat: 59.91,
-                lng: 10.75,
-                message: "I want to travel here!",
-                focus: true,
-                draggable: false
-            }
-        },
-        defaults: {
-            scrollWheelZoom: false
-        }
-    });
+            
 }]);
   

@@ -10,7 +10,7 @@
  */
 angular
   .module('whereApp', [
-    'ngRoute','firebase','ngStorage',"leaflet-directive"
+    'ngRoute','firebase','ngStorage','leaflet-directive'
   ])
   .config(function ($routeProvider,$locationProvider) {
     $locationProvider.hashPrefix('');
@@ -21,14 +21,14 @@ angular
         controllerAs: 'main'
       })
       .when('/login', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
       })
       .when('/admin', {
         templateUrl: 'views/adminview.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controller: 'AdminviewCtrl',
+        controllerAs: 'Adminview'
       })
       .otherwise({
         redirectTo: '/'

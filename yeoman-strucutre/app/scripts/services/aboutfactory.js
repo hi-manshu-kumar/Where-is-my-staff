@@ -8,7 +8,7 @@
  * Factory in the whereApp.
  */
 angular.module('whereApp')
- .factory('userfactory',function($http,$q){
+ .factory('loginfactory',function($http,$q){
     var object ={};
     object.showLogin = function(isShowHide,isShowHideReg){
         // var isShowHide =  true;
