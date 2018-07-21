@@ -30,6 +30,11 @@ angular
         controller: 'AdminviewCtrl',
         controllerAs: 'Adminview'
       })
+      .when('/staff', {
+        templateUrl: 'views/staff.html',
+        controller: 'StaffCtrl',
+        controllerAs: 'Staff'
+      })
       .otherwise({
         redirectTo: '/'
       });
