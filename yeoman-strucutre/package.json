@@ -41,6 +41,7 @@
     "test": "karma start test\\karma.conf.js"
   },
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.19",
     "angular-leaflet-directive": "^0.10.0"
   }
 }

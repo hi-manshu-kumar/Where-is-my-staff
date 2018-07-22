@@ -32,7 +32,7 @@ angular
       })
       .when('/staff', {
         templateUrl: 'views/staff.html',
-        controller: 'StaffCtrl',
+        controller: 'staffCtrl',
         controllerAs: 'Staff'
       })
       .otherwise({
