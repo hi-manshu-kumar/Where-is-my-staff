@@ -19,13 +19,36 @@
     <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
-    <script src="scripts/utils/angular-leaflet-directive.min.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
-    
+    <!-- <script type="text/javascript" src="bower_components/angular-ui-event/dist/event.min.js"></script> -->
+    <script type="text/javascript" src="../bower_components/angular-ui-map/ui-map.min.js"></script>
+    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script> -->
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC61rWT7osQrRX8kHRdNjBu8DVeUZcZTaM&callback=initMap" async defer></script>
     <script src="scripts/config/config.js"></script>
     <script src="scripts/utils/db.js"></script>
-    
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 50%;
+        width: 50%;
+        margin: 1% auto;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
     <!-- <script src="js/app.js"></script>
     <script src="js/config/config.js"></script>
     <script src="js/factory/userFactory.js"></script>
@@ -67,7 +90,7 @@
         </div>
       </div>
     </div>
-
+    <div id="map"></div>
     <div class="container">
     <div ng-view=""></div>
     </div>
@@ -93,6 +116,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->

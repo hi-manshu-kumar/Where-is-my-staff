@@ -1,4 +1,4 @@
-// 'use strict';
+ // 'use strict';
 
 /**
  * @ngdoc function
@@ -9,7 +9,7 @@
  *  .controller('AboutCtrl', function () {
  */
 angular.module('whereApp')
-  .controller('LoginCtrl',['$scope','$firebaseArray','loginfactory','$localStorage','$location',function($scope,$firebaseArray,loginfactory,$localStorage,$location){
+  .controller('LoginCtrl',['$scope','$firebaseArray','loginfactory','$localStorage','$location','$rootScope',function($scope,$firebaseArray,loginfactory,$localStorage,$location,$rootScope){
 
   $scope.isShowHideLog=false;
   var x =$scope.isShowHideLog;
@@ -101,12 +101,25 @@ angular.module('whereApp')
     
     var pr = dbOperations.match(userid, password)
     $localStorage.userid=userid;
+    console.log($localStorage.userid);
     $scope.username=userid;
     console.log($localStorage.userid,userid);
     
     pr.then(data => {
-        
-        $location.path ('/admin');
+
+        // to use loaction.path we need to apply $rootscope.$apply  
+        if(data.type == "Admin")
+        {
+            $rootScope.$apply(function() {   
+                $location.path ("/admin");
+            });
+        }
+        if(data.type== "Staff")
+        {
+            $rootScope.$apply(function() {   
+                $location.path ("/staff");
+            });
+        }
         console.log("inside then",data.type);
         $localStorage.type = data.type;
         

@@ -10,7 +10,7 @@
  */
 angular
   .module('whereApp', [
-    'ngRoute','firebase','ngStorage','leaflet-directive'
+    'ngRoute','firebase','ngStorage'
   ])
   .config(function ($routeProvider,$locationProvider) {
     $locationProvider.hashPrefix('');
