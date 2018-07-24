@@ -8,7 +8,7 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

@@ -8,10 +8,6 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('staffCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('staffCtrl', function ($scope,$localStorage) {
+    $scope.username = $localStorage.userid;
   });

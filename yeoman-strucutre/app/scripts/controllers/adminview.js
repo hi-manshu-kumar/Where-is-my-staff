@@ -26,6 +26,8 @@ angular.module('whereApp')
     // $scope.user = $firebaseArray(userRef);
     // $scope.user = "";
     // console.log($firebaseArray(userRef));
+
+    $scope.username = $localStorage.userid;
     
     //------------------------------admin.html save data-------------------------
     $scope.saveData = function(a,b){
