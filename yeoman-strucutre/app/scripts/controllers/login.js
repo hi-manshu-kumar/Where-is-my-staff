@@ -43,6 +43,7 @@ angular.module('whereApp')
       $scope.isShowHideLog = x; 
       $scope.isShowHideReg = y;       
   };
+  window.localStorage.clear();
   
   //-------------------------firebase code here--------------------
   // var ref = new Firebase('https://console.firebase.google.com/project/where-is-my-staff-95951/database/where-is-my-staff-95951/data');
@@ -99,7 +100,7 @@ angular.module('whereApp')
     var userid= $scope.useridtxt;
     var password= $scope.passwordtxt;   
     
-    var pr = dbOperations.match(userid, password)
+    var pr = dbOperations.match(userid, password);
     $localStorage.userid=userid;
     console.log($localStorage.userid);
     $scope.username=userid;

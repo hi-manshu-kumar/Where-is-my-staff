@@ -9,8 +9,13 @@
  */
 angular.module('whereApp')
   .controller('AdminviewCtrl',['$scope','$firebaseArray','$localStorage','$location',function($scope,$firebaseArray,$localStorage,$location){
-
-   
+    
+    redirect();
+    function redirect(){
+        if(!$localStorage.userid){
+            location.href =  "index.html";
+        }
+    };
     
     //-------------------------firebase code here--------------------
     

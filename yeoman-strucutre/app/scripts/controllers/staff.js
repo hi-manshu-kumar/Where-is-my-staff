@@ -9,5 +9,11 @@
  */
 angular.module('whereApp')
   .controller('staffCtrl', function ($scope,$localStorage) {
+    redirect();
+    function redirect(){
+        if(!$localStorage.userid){
+            location.href =  "index.html";
+        }
+    };
     $scope.username = $localStorage.userid;
   });

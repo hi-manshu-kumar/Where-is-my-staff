@@ -58,5 +58,10 @@ const dbOperations= {
         firebase.database().ref('users/'+userObject.id).set(userObject);
         // firebase.database().ref('users/'.push().set(userObject);
         console.log("User Added...");
+    },
+    redirect(){
+        if(!localStorage.userid){
+            location.href =  "index.html";
+        }
     }
 }
