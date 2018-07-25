@@ -10,10 +10,12 @@
 angular.module('whereApp')
   .controller('staffCtrl', function ($scope,$localStorage,$location) {
     redirect();
+    dbOperations.init();
     function redirect(){
-        if(!$localStorage.StaffName){
+        if(!localStorage.StaffName){
           $location.path('/login');
         }
     };
-    $scope.username = $localStorage.StaffName;
+    $scope.id = localStorage.userid;
+    $scope.username = localStorage.StaffName;
   });

@@ -11,6 +11,8 @@
 angular.module('whereApp')
   .controller('LoginCtrl',['$scope','$firebaseArray','loginfactory','$localStorage','$location','$rootScope',function($scope,$firebaseArray,loginfactory,$localStorage,$location,$rootScope){
 
+
+    dbOperations.init();
   $scope.isShowHideLog=false;
   var x =$scope.isShowHideLog;
   $scope.isShowHideReg=false;
@@ -43,7 +45,7 @@ angular.module('whereApp')
       $scope.isShowHideLog = x; 
       $scope.isShowHideReg = y;       
   };
-  
+
   window.localStorage.clear();
   
   //-------------------------firebase code here--------------------
@@ -102,33 +104,39 @@ angular.module('whereApp')
     var password= $scope.passwordtxt;   
     
     var pr = dbOperations.match(userid, password);
-    $localStorage.userid=userid;
-    console.log($localStorage.userid);
+    // localStorage.setItem("usernameJS",'userid');
+    // console.log(localStorage.getItem("usernameJS"));
+
+    localStorage.usernameJSS = userid;
+    console.log(localStorage.usernameJSS);
+    localStorage.userid=userid;
+
+    // $localStorage.userid=userid;
+    // console.log($localStorage.userid);
     $scope.username=userid;
-    console.log($localStorage.userid,userid);
+    console.log(localStorage.userid,userid);
     
     pr.then(data => {
 
         // to use loaction.path we need to apply $rootscope.$apply  
         if(data.type == "Admin")
         {
-            $localStorage.AdminName = data.name;
+            localStorage.AdminName = data.name;
             $rootScope.$apply(function() {   
                 $location.path ("/admin");
             });
         }
         if(data.type== "Staff")
         {
-            $localStorage.StaffName = data.name;
+            localStorage.StaffName = data.name;
             $rootScope.$apply(function() {   
                 $location.path ("/staff");
             });
         }
         console.log("inside then",data.type,data.name);
-        $localStorage.Sta 
-        $localStorage.type = data.type;
+        localStorage.type = data.type;
         
-        console.log("data is",$localStorage.type,data.type);
+        console.log("data is",localStorage.type,data.type);
     }).catch(err => {
         console.log(err);
         // document.querySelector("#message").innerHTML = "Invalid User id or password";

@@ -9,10 +9,10 @@
  */
 angular.module('whereApp')
   .controller('AdminviewCtrl',['$scope','$firebaseArray','$localStorage','$location',function($scope,$firebaseArray,$localStorage,$location){
-    
+    dbOperations.init();
     redirect();
     function redirect(){
-        if(!$localStorage.AdminName){
+        if(!localStorage.AdminName){
             $location.path('/login');
         }
     };
@@ -32,7 +32,8 @@ angular.module('whereApp')
     // $scope.user = "";
     // console.log($firebaseArray(userRef));
 
-    $scope.username = $localStorage.userid;
+    $scope.username = localStorage.AdminName;
+    $scope.id = localStorage.userid; 
     
     //------------------------------admin.html save data-------------------------
     $scope.saveData = function(a,b){

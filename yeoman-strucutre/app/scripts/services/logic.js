@@ -63,5 +63,22 @@ const dbOperations= {
         if(!localStorage.userid){
             location.href =  "index.html";
         }
+    },
+    init(){
+        checkLogin();
+        checkLogin2();
+    }, 
+    
+    checkLogin(){
+        if(!localStorage.StaffName && !localStorage.AdminName){
+            document.querySelector('#logout').style.display = 'none';
+            console.log("hide logout........................... ");
+        }
+    },
+    checkLogin2(){
+        if(localStorage.StaffName || localStorage.AdminName){
+            document.querySelector('#logout').style.display = 'block';
+            console.log("show logout........................... ");
+        }
     }
 }

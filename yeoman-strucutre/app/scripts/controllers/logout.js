@@ -8,10 +8,17 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('LogoutCtrl', function ($localStorage,$location) {
-    $localStorage.$reset();
+  .controller('LogoutCtrl', function ($scope,$localStorage,$location) {
+    localStorage.clear();
+    dbOperations.init();
+    // $scope.showLogout = 'hidden';
+
+    //-----------------------------------to redirect-------------------------
+    localStorage.clear();
     redirect();
     function redirect(){
       $location.path('/login');
     };
+
+
   });

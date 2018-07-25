@@ -62,6 +62,15 @@ input.ng-untouched{
     
     color: aqua;
 }
+
+.hidden {
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
 #map {
     height: 60%;
   } 

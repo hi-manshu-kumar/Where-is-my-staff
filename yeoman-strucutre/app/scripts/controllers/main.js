@@ -9,6 +9,7 @@
  */
 angular.module('whereApp')
   .controller('MainCtrl', function ($scope) {
+    dbOperations.init();
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

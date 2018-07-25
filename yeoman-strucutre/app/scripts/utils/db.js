@@ -59,5 +59,18 @@ const dbOperations= {
         firebase.database().ref('users/'+userObject.id).set(userObject);
         // firebase.database().ref('users/'.push().set(userObject);
         console.log("User Added...");
-    }
+    },
+    init(){
+
+        if(!localStorage.StaffName && !localStorage.AdminName){
+            document.querySelector('#logout').style.display = 'none';
+            document.querySelector('#login').style.display = 'block';
+            console.log("hide logout........................... ");
+        }
+        if(localStorage.StaffName || localStorage.AdminName){
+            document.querySelector('#logout').style.display = 'block';
+            document.querySelector('#login').style.display = 'none';            
+            console.log("show logout........................... ");
+        }
+    }    
 }
