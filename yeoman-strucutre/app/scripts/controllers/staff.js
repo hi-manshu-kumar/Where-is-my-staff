@@ -11,9 +11,9 @@ angular.module('whereApp')
   .controller('staffCtrl', function ($scope,$localStorage,$location) {
     redirect();
     function redirect(){
-        if(!$localStorage.userid){
+        if(!$localStorage.StaffName){
           $location.path('/login');
         }
     };
-    $scope.username = $localStorage.userid;
+    $scope.username = $localStorage.StaffName;
   });

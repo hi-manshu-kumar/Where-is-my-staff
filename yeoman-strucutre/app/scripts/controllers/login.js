@@ -111,17 +111,20 @@ angular.module('whereApp')
         // to use loaction.path we need to apply $rootscope.$apply  
         if(data.type == "Admin")
         {
+            $localStorage.AdminName = data.name;
             $rootScope.$apply(function() {   
                 $location.path ("/admin");
             });
         }
         if(data.type== "Staff")
         {
+            $localStorage.StaffName = data.name;
             $rootScope.$apply(function() {   
                 $location.path ("/staff");
             });
         }
-        console.log("inside then",data.type);
+        console.log("inside then",data.type,data.name);
+        $localStorage.Sta 
         $localStorage.type = data.type;
         
         console.log("data is",$localStorage.type,data.type);
