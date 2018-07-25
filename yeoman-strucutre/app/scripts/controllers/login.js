@@ -43,6 +43,7 @@ angular.module('whereApp')
       $scope.isShowHideLog = x; 
       $scope.isShowHideReg = y;       
   };
+  
   window.localStorage.clear();
   
   //-------------------------firebase code here--------------------

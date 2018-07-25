@@ -35,6 +35,11 @@ angular
         controller: 'staffCtrl',
         controllerAs: 'Staff'
       })
+      .when('/logout', {
+        template: '',
+        controller: 'LogoutCtrl',
+        controllerAs: 'logout'
+      })
       .otherwise({
         redirectTo: '/'
       });
