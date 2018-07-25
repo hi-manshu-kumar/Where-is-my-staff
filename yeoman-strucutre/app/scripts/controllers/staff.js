@@ -8,11 +8,11 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('staffCtrl', function ($scope,$localStorage) {
+  .controller('staffCtrl', function ($scope,$localStorage,$location) {
     redirect();
     function redirect(){
         if(!$localStorage.userid){
-            location.href =  "index.html";
+          $location.path('/login');
         }
     };
     $scope.username = $localStorage.userid;

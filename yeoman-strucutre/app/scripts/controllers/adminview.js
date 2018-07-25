@@ -13,7 +13,8 @@ angular.module('whereApp')
     redirect();
     function redirect(){
         if(!$localStorage.userid){
-            location.href =  "index.html";
+            // location.href =  "index.html";
+            $location.path('/login');
         }
     };
     
