@@ -10,7 +10,7 @@
  */
 angular.module('whereApp')
   .controller('LoginCtrl',['$scope','$firebaseArray','loginfactory','$localStorage','$location','$rootScope',function($scope,$firebaseArray,loginfactory,$localStorage,$location,$rootScope){
-
+    
 
     dbOperations.init();
   $scope.isShowHideLog=false;
