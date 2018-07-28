@@ -44,10 +44,15 @@ angular.module('whereApp')
         //   // $scope.position = position;
         //   // console.log("data is", position);
         // });
+        sendToDb();
       }).catch(err => {
         console.log("catch is ", err);
       });
     };
+
+    function sendToDb(){
+      
+    }
     
 
   });
