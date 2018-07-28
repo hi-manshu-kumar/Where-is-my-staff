@@ -10,7 +10,7 @@
 angular.module('whereApp')
   .factory('geoLocation', function ($q, $window) {
 
-    var object = {};
+    // var object = {};
       
     // object.getCurrentPosition = function () {
     //   var deferred = $q.defer();
