@@ -65,8 +65,9 @@ angular.module('whereApp')
       // console.log(users.$indexFor(alias));
       const recordPosition = users.$indexFor(alias);
       users[recordPosition].latitude = $scope.latitude;
+      users[recordPosition].longitude = $scope.longitude;
       users.$save(recordPosition).then( data => {
-        alert("record added");
+        alert("Position succesfully added");
       });
       // const user = $firebaseArray(users.$getRecord(alias));
     }
