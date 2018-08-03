@@ -8,12 +8,13 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation,$firebaseArray) {
+  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation, $firebaseArray) {
     redirect();
     dbOperations.init();
     $scope.position;
     $scope.latitude;
     $scope.longitude;
+
     function redirect() {
       if (!localStorage.StaffName) {
         $location.path('/login');
@@ -36,7 +37,9 @@ angular.module('whereApp')
       // });
       geoLocation.getCurrentPosition().
       then(data => {
-        console.log("data is", {data});
+        console.log("data is", {
+          data
+        });
         $scope.position = data;
         $scope.latitude = data.coords.latitude;
         $scope.longitude = data.coords.longitude;
@@ -50,27 +53,27 @@ angular.module('whereApp')
       });
     };
 
-    var rootRef = firebase.database().ref();    
+    var rootRef = firebase.database().ref();
     var userRef = rootRef.child('users');
-    $scope.users=$firebaseArray(userRef);   
-    const users=$firebaseArray(userRef);
+    $scope.users = $firebaseArray(userRef);
+    const users = $firebaseArray(userRef);
 
-    console.log(localStorage.keyF);
-    var alias = localStorage.keyF;
+    console.log(localStorage.keyFB);
+    // var alias = localStorage.keyFB;
     // users.$getRecord("alias").name;
     // console.log(users.$getRecord(1).name);
 
-    function sendToDb(){
+    function sendToDb() {
       // console.log(users.$getRecord(alias).latitude);
       // console.log(users.$indexFor(alias));
-      const recordPosition = users.$indexFor(alias);
+      const recordPosition = users.$indexFor(localStorage.keyFB);
       users[recordPosition].latitude = $scope.latitude;
       users[recordPosition].longitude = $scope.longitude;
-      users.$save(recordPosition).then( data => {
+
+      users.$save(recordPosition).then(data => {
         alert("Position succesfully added");
       });
-      // const user = $firebaseArray(users.$getRecord(alias));
     }
-    
+
 
   });
