@@ -50,11 +50,17 @@
             <span ng-show="regform.name.$touched && regform.name.$invalid && regform.name.$error['required']" class="error">Name can't be empty</span>
         </div>
         <div class="form-group">
-            <label for="">Type</label>
-            <select name="Type" class="form-control" id="type" ng-model="type">
+            <label for="">Type</label> &nbsp; &nbsp; &nbsp;
+            <!-- <select name="Type" class="form-control" id="type" ng-model="type">
                 <option value="Staff">Staff</option>
-                <option value="Admin" selected>Admin</option>
-            </select>
+                <option value="Admin" checked>Admin</option> -->
+                <label class="radio-inline">
+                <input type="radio" name="Type" value="Admin"  id="type" ng-model="type" checked >Admin<br>
+                </label>
+                <label class="radio-inline">    
+                <input type="radio" name="Type" value="Staff"  id="type" ng-model="type">Staff<br>
+                </label>
+            <!-- </select> -->
         </div>
         <div class="form-group">
             <label for="">E-mail</label>
