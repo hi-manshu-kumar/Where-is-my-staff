@@ -8,7 +8,7 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation) {
+  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation,$firebaseArray) {
     redirect();
     dbOperations.init();
     $scope.position;
@@ -50,7 +50,18 @@ angular.module('whereApp')
       });
     };
 
+    var rootRef = firebase.database().ref();    
+    var userRef = rootRef.child('users');
+    $scope.users=$firebaseArray(userRef);   
+    const users=$firebaseArray(userRef);
+
+    console.log(localStorage.keyF);
+    var alias = localStorage.keyF;
+    // users.$getRecord("alias").name;
+    // console.log(users.$getRecord(1).name);
+
     function sendToDb(){
+      console.log(users.$getRecord(alias));
       
     }
     

@@ -34,6 +34,11 @@ const dbOperations= {
                 console.log("Type of", obj.userid);
                 
                 for (let key in obj) {
+                    console.log("key is ",key);
+                    // localStorage.keyFB == key;
+                    localStorage.setItem("keyF", key);
+                    // console.log(localStorage.keyFB);
+                    console.log(localStorage.getItem("keyf"));
                     console.log(key, " ", obj[key]);
                     console.log(key, " ", obj[key].userid);
                     console.log(key, " ", obj[key].password);

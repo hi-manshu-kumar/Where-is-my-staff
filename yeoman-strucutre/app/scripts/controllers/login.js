@@ -133,10 +133,7 @@ angular.module('whereApp')
                 $location.path ("/staff");
             });
         }
-        console.log("inside then",data.type,data.name);
         localStorage.type = data.type;
-        
-        console.log("data is",localStorage.type,data.type);
     }).catch(err => {
         console.log(err);
         // document.querySelector("#message").innerHTML = "Invalid User id or password";
