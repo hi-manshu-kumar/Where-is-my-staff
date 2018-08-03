@@ -72,7 +72,9 @@ angular.module('whereApp')
           password:$scope.pwd,
           userid:$scope.userid,
           type:$scope.type,
-          enable:$scope.enable
+          enable:$scope.enable,
+          latitude:"",
+          longitude:""
       }).then(function(userRef){
           // var id = userRef.key();
           // console.log("added user ...");
