@@ -108,3 +108,23 @@ input.ng-untouched{
 #names { 
      cursor: pointer; 
        }
+
+#map_canvas {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            margin: 0px;
+        }
+
+.angular-google-map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+      }
+
+leaflet{
+    height: 300px;
+    width: 300px;
+}      

@@ -70,15 +70,16 @@ angular.module('whereApp')
 
      //--------------------- employee details here--------------------------------
     $scope.showDetails = (a,b) => {
-        console.log(a,b);
-        var c = a.$id;
-        console.log(a.$id,users.$getRecord('-LI5ooXTyfKLbMOSeGHc'));
+        // console.log(a,b);
+        // console.log(a.$id,users.$getRecord(a.$id));
         
         $scope.msg="inside show details";
         $scope.empName = users.$getRecord(a.$id).name;
         $scope.empEmail = users.$getRecord(a.$id).email;
         $scope.empUserid = users.$getRecord(a.$id).userid;
         $scope.empType = users.$getRecord(a.$id).type;
+        $scope.latitude = users.$getRecord(a.$id).latitude;
+        $scope.longitude = users.$getRecord(a.$id).longitude;
     }
     // -------------------------Assign Task here---------------------------------
     $scope.date = new Date();
@@ -131,5 +132,68 @@ angular.module('whereApp')
     // $scope.Map.setCenter($scope.Latlngbounds.getCenter());
     // $scope.Map.fitBounds($scope.Latlngbounds);
 
+//-----------------------------working maps but api problem--------------------------- 
+   /* $scope.map = {center: {latitude: 28.6547555, longitude: 77.38890719999999 }, zoom: 14 };
+    $scope.options = {scrollwheel: true};
+    $scope.coordsUpdates = 0;
+    $scope.dynamicMoveCtr = 0;
+    $scope.marker = {
+      id: 0,
+      coords: {
+        latitude: 28.6547555,
+        longitude: 77.38890719999999
+      },
+      options: { draggable: false },
+      events: {
+        dragend: function (marker, eventName, args) {
+          var lat = marker.getPosition().lat();
+          var lon = marker.getPosition().lng();
 
+          $scope.marker.options = {
+            draggable: true,
+            labelContent: "lat: " + $scope.marker.coords.latitude + '       ' + 'lon: ' + $scope.marker.coords.longitude,
+            labelAnchor: "100 0",
+            labelClass: "marker-labels"
+          };
+        }
+      }
+    };*/
+    $scope.$watch(function($scope){
+      return $scope.latitude;
+    }, function (newValue,oldValue){
+      var x = $scope.longitude || 24
+      if( $scope.longitude || 24)
+      console.log(x);
+      angular.extend($scope, {
+        osloCenter: {
+            lat: 28.6547555,
+            lng: 77.38890719999999,
+            zoom: 10
+        },
+        markers: {
+            osloMarker: {
+                lat: $scope.latitude,
+                lng: $scope.longitude,
+                message: "I am here",
+                focus: true,
+                draggable: true
+            }
+        },
+        defaults: {
+            scrollWheelZoom: true
+        }
+      });}
+    )
+    // $scope.$apply(function() {
+    // var x = $scope.longitude || 24
+    // if( $scope.longitude || 24)
+    // console.log(x);
+    // });
+    angular.extend($scope, {
+      osloCenter: {
+          lat: 28.6547555,
+          lng: 77.38890719999999,
+          zoom: 10
+      }});
+    
 }]);
