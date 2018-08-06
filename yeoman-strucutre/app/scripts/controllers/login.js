@@ -74,7 +74,9 @@ angular.module('whereApp')
           type:$scope.type,
           enable:$scope.enable,
           latitude:"",
-          longitude:""
+          longitude:"",
+          taskName:"",
+          taskDate:""
       }).then(function(userRef){
           // var id = userRef.key();
           // console.log("added user ...");

@@ -67,13 +67,12 @@ angular.module('whereApp')
     //   }
   
     };
-
      //--------------------- employee details here--------------------------------
     $scope.showDetails = (a,b) => {
-        // console.log(a,b);
+        console.log(a,b);
         // console.log(a.$id,users.$getRecord(a.$id));
-        
-        $scope.msg="inside show details";
+        $scope.id =a.$id;
+        $scope.msg = "inside show details";
         $scope.empName = users.$getRecord(a.$id).name;
         $scope.empEmail = users.$getRecord(a.$id).email;
         $scope.empUserid = users.$getRecord(a.$id).userid;
@@ -83,54 +82,22 @@ angular.module('whereApp')
     }
     // -------------------------Assign Task here---------------------------------
     $scope.date = new Date();
-    // =========================================codes for gmaps==================
-    
-    // $scope.Markers = [
-    //     {
-    //         "title": 'Aksa Beach',
-    //         "lat": '19.1759668',
-    //         "lng": '72.79504659999998',
-    //         "description": 'Aksa Beach is a popular beach and a vacation spot in Aksa village at Malad, Mumbai.'
-    //     },
-    //     ];
-    // //Setting the Map options.
-    // $scope.MapOptions = {
-    //     center: new google.maps.LatLng(19.214,72.91062),
-    //     zoom: 0,
-    //     mapTypeId: google.maps.MapTypeId.ROADMAP
-    // };
+    $scope.setTask = function() {
 
-    // //Initializing the InfoWindow, Map and LatLngBounds objects.
-    // $scope.InfoWindow = new google.maps.InfoWindow();
-    // $scope.Latlngbounds = new google.maps.LatLngBounds();
-    // $scope.Map = new google.maps.Map(document.getElementById("dvMap"), $scope.MapOptions);
-    // //Looping through the Array and adding Markers.
-    // for (var i = 0; i < $scope.Markers.length; i++) {
-    //     var data = $scope.Markers[i];
-    //     var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+        const userEntry = users.$indexFor($scope.id);
+        console.log($scope.taskDate.toString(),$scope.taskName);
+        users[userEntry].taskName = $scope.taskName;
+        users[userEntry].taskDate = $scope.taskDate.toString();
+  
+        users.$save(userEntry).then(data => {
+          alert("New Task succesfully added");
+        });
 
-    //     //Initializing the Marker object.
-    //     var marker = new google.maps.Marker({
-    //         position: myLatlng,
-    //         map: $scope.Map,
-    //         title: data.title
-    //     });
-
-    //     //Adding InfoWindow to the Marker.
-    //     (function (marker, data) {
-    //         google.maps.event.addListener(marker, "click", function (e) {
-    //             $scope.InfoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.description + "</div>");
-    //             $scope.InfoWindow.open($scope.Map, marker);
-    //         });
-    //     })(marker, data);
-
-    //     //Plotting the Marker on the Map.
-    //     $scope.Latlngbounds.extend(marker.position);
-    // }
-
-    // //Adjusting the Map for best display.
-    // $scope.Map.setCenter($scope.Latlngbounds.getCenter());
-    // $scope.Map.fitBounds($scope.Latlngbounds);
+        // console.log($scope.id);
+        // console.log(users.$getRecord($scope.id));
+        // users.$getRecord($scope.id).taskName = $scope.taskName;
+        // users.$getRecord($scope.id).taskDate = $scope.taskDate;
+    }
 
 //-----------------------------working maps but api problem--------------------------- 
    /* $scope.map = {center: {latitude: 28.6547555, longitude: 77.38890719999999 }, zoom: 14 };
@@ -182,8 +149,8 @@ angular.module('whereApp')
         defaults: {
             scrollWheelZoom: true
         }
-      });}
-    )
+      });
+    })
     // $scope.$apply(function() {
     // var x = $scope.longitude || 24
     // if( $scope.longitude || 24)

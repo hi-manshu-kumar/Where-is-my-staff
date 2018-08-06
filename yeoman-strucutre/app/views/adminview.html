@@ -77,14 +77,15 @@
     <form action="" class="well clearfix" >
         <div class="form-group">
             <label for="">Task</label>
-            <input type="text"  class="form-control" placeholder="Enter task">  <br> 
+            <input type="text"  class="form-control" placeholder="Enter task" ng-model="taskName">  <br> 
         </div>
 
         <div class="form-group">
             <label for="">Task to be completed on</label>
             <input type="date" placeholder="Please specify a date"
             onClick="$(this).removeClass('placeholderclass')"
-            class="form-control dateclass placeholderclass"> <br>
+            class="form-control dateclass placeholderclass"
+            ng-model="taskDate"> <br>
         </div>
 
         <div class="form-group">
@@ -94,7 +95,7 @@
             class="form-control dateclass placeholderclass">
         </div> 
 
-        <button class="btn btn-success right ">Submit</button>
+        <button class="btn btn-success right" ng-click="setTask(user)">Submit</button>
     </form> 
 </fieldset>  
 
