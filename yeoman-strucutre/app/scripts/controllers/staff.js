@@ -62,6 +62,15 @@ angular.module('whereApp')
     // var alias = localStorage.keyFB;
     // users.$getRecord("alias").name;
     // console.log(users.$getRecord(1).name);
+    const recordPosition = users.$indexFor(localStorage.keyFB);
+    
+    $scope.loadTask = function () {
+      const taskDatee = users.$getRecord(localStorage.keyFB).taskDate;
+      var q = new Date(taskDatee)
+      console.log( q);
+      $scope.taskDate = q ;
+      $scope.taskName = users.$getRecord(localStorage.keyFB).taskName;
+    }
 
     function sendToDb() {
       // console.log(users.$getRecord(alias).latitude);
@@ -69,7 +78,7 @@ angular.module('whereApp')
       const recordPosition = users.$indexFor(localStorage.keyFB);
       users[recordPosition].latitude = $scope.latitude;
       users[recordPosition].longitude = $scope.longitude;
-
+      
       users.$save(recordPosition).then(data => {
         alert("Position succesfully added");
       });

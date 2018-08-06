@@ -6,13 +6,14 @@
         <h2>
             Task View
         </h2>
+        <button ng-click="loadTask()" class="btn btn-primary">Load Task</button> <br> <br>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Reach Cannaught Palace" disabled>
+            <input type="text" class="form-control" placeholder="Reach Cannaught Palace" disabled ng-model="taskName">
         </div>    
 
         <h3>Task Details</h3>
         <label for="">Duration</label>
-        <input type="datetime-local" placeholder="Destination" disabled class="form-control" title="Reach this location within time duration"> <br>
+        <input type="date" placeholder="Destination" disabled class="form-control" title="Reach this location within time duration" ng-model="taskDate"> <br>
         <div class="form-group">
             <input type="number" placeholder="location" disabled class="form-control" title="Reach this location within 100 meters">
         </div>
