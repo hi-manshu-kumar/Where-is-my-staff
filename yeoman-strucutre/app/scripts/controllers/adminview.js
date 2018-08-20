@@ -67,7 +67,7 @@ angular.module('whereApp')
     //   }
   
     };
-     //--------------------- employee details here--------------------------------
+    //--------------------- employee details here--------------------------------
     $scope.showDetails = (a,b) => {
         console.log(a,b);
         // console.log(a.$id,users.$getRecord(a.$id));
@@ -125,6 +125,11 @@ angular.module('whereApp')
         }
       }
     };*/
+
+
+    $scope.taskLongitude = 28.6547555;
+    $scope.taskLatitude = 77.38890719999999;
+
     $scope.$watch(function($scope){
       return $scope.latitude;
     }, function (newValue,oldValue){
@@ -137,20 +142,38 @@ angular.module('whereApp')
             lng: 77.38890719999999,
             zoom: 10
         },
-        markers: {
-            osloMarker: {
+        markersStaff: {
+            staffMarker: {
                 lat: $scope.latitude,
                 lng: $scope.longitude,
-                message: "I am here",
+                message: "" + $scope.empName + " is here",
                 focus: true,
-                draggable: true
+                draggable: false
             }
         },
+        
+        // markersSet: {
+        //     osloMarker: {
+        //         lat: $scope.latitude,
+        //         lng: $scope.longitude,
+        //         message: $scope.empName + " is here",
+        //         focus: true,
+        //         draggable: false
+        //     },
+        //     taskMarker: {
+        //         lat: $scope.taskLongitude,
+        //         lng: $scope.taskLatitude,
+        //         message: "Set the new task by dragging",
+        //         focus: true,
+        //         draggable: true
+        //     }
+        // },
+
         defaults: {
             scrollWheelZoom: true
         }
       });
-    })
+    });
     // $scope.$apply(function() {
     // var x = $scope.longitude || 24
     // if( $scope.longitude || 24)
@@ -161,6 +184,33 @@ angular.module('whereApp')
           lat: 28.6547555,
           lng: 77.38890719999999,
           zoom: 10
-      }});
+      },
+      markers: {
+            taskMarker: {
+                lat: $scope.taskLongitude,
+                lng: $scope.taskLatitude,
+                message: "Set the new task by dragging",
+                focus: true,
+                draggable: true
+            }
+        },
+
+        defaults: {
+            scrollWheelZoom: true
+        },
+        events: { // or just {} //all events
+                    markersSet:{
+                      enable: [ 'dragend' ]
+                      //logic: 'emit'
+                    }
+        }
+    });
+
+    $scope.$on("leafletDirectiveMarker.dragend", function(event, args){
+                $scope.position.lat = args.model.lat;
+                $scope.position.lng = args.model.lng;
+                console.log("marker changed");
+                alert("hi");
+            });      
     
 }]);
