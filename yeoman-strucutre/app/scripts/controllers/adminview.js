@@ -88,7 +88,8 @@ angular.module('whereApp')
         console.log($scope.taskDate.toString(),$scope.taskName);
         users[userEntry].taskName = $scope.taskName;
         users[userEntry].taskDate = $scope.taskDate.toString();
-  
+        users[userEntry].taskLatitude = $scope.position.lat;
+        users[userEntry].taskLongitude = $scope.position.lng;
         users.$save(userEntry).then(data => {
           alert("New Task succesfully added");
         });
