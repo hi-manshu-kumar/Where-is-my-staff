@@ -98,12 +98,12 @@
         <div class="form-group">
             <label for="">Task Co-ordinates</label>
             <leaflet markers="markers" event-broadcast="events" center="osloCenter" style="width:660px; height: 300px;"></leaflet>
-            {{taskLongitude}}
-            {{taskLatitude}} <br>
+            <!-- {{taskLongitude}}
+            {{taskLatitude}} <br> -->
 
-            {{x}}
             {{$scope.latitude}} <br>
-            <input type="number" ng-model="markers.taskMarker.lat">
+            <input type="number" ng-model="position.lat">
+            <input type="number" ng-model="position.lng">
         </div>
         <button class="btn btn-success right" ng-click="setTask(user)">Submit</button>
     </form> 

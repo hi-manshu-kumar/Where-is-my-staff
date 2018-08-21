@@ -12,8 +12,9 @@ angular
   .module('whereApp', [
     'ngRoute','firebase','ngStorage','uiGmapgoogle-maps',"leaflet-directive"
   ])
-  .config(function ($routeProvider,$locationProvider) {
+  .config(function ($routeProvider,$locationProvider,$logProvider) {
     $locationProvider.hashPrefix('');
+    $logProvider.debugEnabled(false);
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',

@@ -146,7 +146,7 @@ angular.module('whereApp')
             staffMarker: {
                 lat: $scope.latitude,
                 lng: $scope.longitude,
-                message: "" + $scope.empName + " is here",
+                message: + $scope.empName + " is here",
                 focus: true,
                 draggable: false
             }
@@ -179,38 +179,42 @@ angular.module('whereApp')
     // if( $scope.longitude || 24)
     // console.log(x);
     // });
-    angular.extend($scope, {
-      osloCenter: {
-          lat: 28.6547555,
-          lng: 77.38890719999999,
-          zoom: 10
-      },
-      markers: {
-            taskMarker: {
-                lat: $scope.taskLongitude,
-                lng: $scope.taskLatitude,
-                message: "Set the new task by dragging",
-                focus: true,
-                draggable: true
-            }
-        },
 
-        defaults: {
-            scrollWheelZoom: true
-        },
-        events: { // or just {} //all events
-                    markersSet:{
-                      enable: [ 'dragend' ]
-                      //logic: 'emit'
-                    }
-        }
-    });
+    var mainMarker = {
+        lat: 28.6547555,
+        lng: 77.38890719999999,
+        message: "Set the new task by dragging",
+        focus: true,
+        draggable: true
+    };
+
+      angular.extend($scope, {
+          osloCenter: {
+              lat: 28.6547555,
+              lng: 77.38890719999999,
+              zoom: 10
+          },
+          markers: {
+              taskMarker: angular.copy(mainMarker)
+          },
+          position: {
+              lat: $scope.taskLongitude,
+              lng: $scope.taskLatitude
+          },
+
+          defaults: {
+              scrollWheelZoom: true
+          },
+          events: { 
+              markers: {
+                  enable: ['dragend']
+              }
+          }
+      });
 
     $scope.$on("leafletDirectiveMarker.dragend", function(event, args){
                 $scope.position.lat = args.model.lat;
                 $scope.position.lng = args.model.lng;
-                console.log("marker changed");
-                alert("hi");
             });      
     
 }]);
