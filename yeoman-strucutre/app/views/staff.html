@@ -15,10 +15,12 @@
         <label for="">Duration</label>
         <input type="date" placeholder="Destination" disabled class="form-control" title="Reach this location within time duration" ng-model="taskDate"> <br>
         <div class="form-group">
-            <input type="number" placeholder="location" disabled class="form-control" title="Reach this location within 100 meters">
+            <input type="number" placeholder="location" disabled class="form-control" title="Reach this location within 100 meters" ng-model="taskLat">
+            <input type="number" placeholder="location" disabled class="form-control" title="Reach this location within 100 meters" ng-model="taskLng">
+
         </div>
     </div>
-     <button class="btn btn-primary center">Complete Task</button> <br> 
+    <button class="btn btn-primary center">Complete Task</button> <br> 
      
     <div class="upload-block">
         <div>

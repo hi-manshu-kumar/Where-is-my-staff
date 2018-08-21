@@ -70,6 +70,8 @@ angular.module('whereApp')
       console.log( q);
       $scope.taskDate = q ;
       $scope.taskName = users.$getRecord(localStorage.keyFB).taskName;
+      $scope.taskLat = users.$getRecord(localStorage.keyFB).taskLatitude;
+      $scope.taskLng = users.$getRecord(localStorage.keyFB).taskLongitude;
     }
 
     function sendToDb() {
