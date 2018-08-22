@@ -8,7 +8,7 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation, $firebaseArray) {
+  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation, $firebaseArray,) {
     redirect();
     dbOperations.init();
     $scope.position;
@@ -103,9 +103,8 @@ angular.module('whereApp')
 
     angular.extend($scope, {
       osloCenter: {
-          lat: 28.6547555,
-          lng: 77.38890719999999,
-          zoom: 10
+        autoDiscover: true,
+        zoom: 10
       },
       markers: {
         taskMarker: {
