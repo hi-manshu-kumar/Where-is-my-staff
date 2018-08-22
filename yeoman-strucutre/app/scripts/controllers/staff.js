@@ -86,5 +86,86 @@ angular.module('whereApp')
       });
     }
 
+    var mainMarker = {
+        lat: 28.6547555,
+        lng: 77.38890719999999,
+        message: "You have to reach here",
+        focus: true,
+        draggable: false
+    };
+
+    // navigator.geolocation.getCurrentPosition(function(position){
+    //   $scope.$apply(function(){
+    //     $scope.positionLat = position.coords.latitude;
+    //     $scope.positionLng = position.coords.longitude;
+    //   });
+    // });
+
+    angular.extend($scope, {
+      osloCenter: {
+          lat: 28.6547555,
+          lng: 77.38890719999999,
+          zoom: 10
+      },
+      markers: {
+        taskMarker: {
+            lat: 28.6547555,
+            lng: 77.58810719999999,
+            message: "You have to reach here",
+            focus: true,
+            draggable: false
+        }
+        // marker: {
+        //     lat: $scope.latitude,
+        //     lng: $scope.longitude,
+        //     message: "You are here",
+        //     focus: true,
+        //     draggable: false
+        // }
+      },
+      position: {
+          lat: 28.6547555,
+          lng: 77.38890719999999,
+      },
+      defaults: {
+          scrollWheelZoom: true
+      }
+      
+    });    
+
+    $scope.$watch(function($scope){
+      return $scope.latitude;
+    }, function (newValue,oldValue){
+      var x = $scope.longitude || 24
+      if( $scope.longitude || 24)
+      console.log(x);
+      angular.extend($scope, {
+        osloCenter: {
+            lat: 28.6547555,
+            lng: 77.38890719999999,
+            zoom: 10
+        },
+        markers: {
+            taskMarker: {
+                lat: 28.6547555,
+                lng: 77.58810719999999,
+                message: "You have to reach here",
+                focus: true,
+                draggable: false
+            },
+            staffMarker: {
+                lat: $scope.latitude,
+                lng: $scope.longitude,
+                message: "you are here",
+                focus: true,
+                draggable: false
+            }
+        },
+
+        defaults: {
+            scrollWheelZoom: true
+        }
+      });
+    });
 
   });

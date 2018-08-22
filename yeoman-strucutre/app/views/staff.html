@@ -17,7 +17,11 @@
         <div class="form-group">
             <input type="number" placeholder="location" disabled class="form-control" title="Reach this location within 100 meters" ng-model="taskLat">
             <input type="number" placeholder="location" disabled class="form-control" title="Reach this location within 100 meters" ng-model="taskLng">
+        </div>
 
+        <div class="form-group">
+            <label for="">Task Co-ordinates</label>
+            <leaflet markers="markers" center="osloCenter" style="width:660px; height: 300px;"></leaflet>
         </div>
     </div>
     <button class="btn btn-primary center">Complete Task</button> <br> 
