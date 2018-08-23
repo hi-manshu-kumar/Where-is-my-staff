@@ -79,6 +79,43 @@ angular.module('whereApp')
         $scope.empType = users.$getRecord(a.$id).type;
         $scope.latitude = users.$getRecord(a.$id).latitude;
         $scope.longitude = users.$getRecord(a.$id).longitude;
+
+        angular.extend($scope, {
+            osloCenter: {
+                autoDiscover: true,
+                zoom: 10
+            },
+            markersStaff: {
+                staffMarker: {
+                    lat: $scope.latitude,
+                    lng: $scope.longitude,
+                    message: $scope.empName + " is here",
+                    focus: true,
+                    draggable: false
+                }
+            },
+            
+            // markersSet: {
+            //     osloMarker: {
+            //         lat: $scope.latitude,
+            //         lng: $scope.longitude,
+            //         message: $scope.empName + " is here",
+            //         focus: true,
+            //         draggable: false
+            //     },
+            //     taskMarker: {
+            //         lat: $scope.taskLongitude,
+            //         lng: $scope.taskLatitude,
+            //         message: "Set the new task by dragging",
+            //         focus: true,
+            //         draggable: true
+            //     }
+            // },
+    
+            defaults: {
+                scrollWheelZoom: true
+            }
+          });
     }
     // -------------------------Assign Task here---------------------------------
     $scope.date = new Date();
@@ -131,49 +168,51 @@ angular.module('whereApp')
     $scope.taskLongitude = 28.6547555;
     $scope.taskLatitude = 77.38890719999999;
 
-    $scope.$watch(function($scope){
-      return $scope.latitude;
-    }, function (newValue,oldValue){
-      var x = $scope.longitude || 24
-      if( $scope.longitude || 24)
-      console.log(x);
-      angular.extend($scope, {
-        osloCenter: {
-            autoDiscover: true,
-            zoom: 10
-        },
-        markersStaff: {
-            staffMarker: {
-                lat: $scope.latitude,
-                lng: $scope.longitude,
-                message: $scope.empName + " is here",
-                focus: true,
-                draggable: false
-            }
-        },
+    // $scope.$watch(function($scope){
+    //   return $scope.latitude;
+    // }, function (newValue,oldValue){
+    //   var x = $scope.longitude || 24
+    //   if( $scope.longitude || 24)
+    //   console.log(x);
+    //   angular.extend($scope, {
+    //     osloCenter: {
+    //         autoDiscover: true,
+    //         zoom: 10
+    //     },
+    //     markersStaff: {
+    //         staffMarker: {
+    //             lat: $scope.latitude,
+    //             lng: $scope.longitude,
+    //             message: $scope.empName + " is here",
+    //             focus: true,
+    //             draggable: false
+    //         }
+    //     },
         
-        // markersSet: {
-        //     osloMarker: {
-        //         lat: $scope.latitude,
-        //         lng: $scope.longitude,
-        //         message: $scope.empName + " is here",
-        //         focus: true,
-        //         draggable: false
-        //     },
-        //     taskMarker: {
-        //         lat: $scope.taskLongitude,
-        //         lng: $scope.taskLatitude,
-        //         message: "Set the new task by dragging",
-        //         focus: true,
-        //         draggable: true
-        //     }
-        // },
+    //     // markersSet: {
+    //     //     osloMarker: {
+    //     //         lat: $scope.latitude,
+    //     //         lng: $scope.longitude,
+    //     //         message: $scope.empName + " is here",
+    //     //         focus: true,
+    //     //         draggable: false
+    //     //     },
+    //     //     taskMarker: {
+    //     //         lat: $scope.taskLongitude,
+    //     //         lng: $scope.taskLatitude,
+    //     //         message: "Set the new task by dragging",
+    //     //         focus: true,
+    //     //         draggable: true
+    //     //     }
+    //     // },
 
-        defaults: {
-            scrollWheelZoom: true
-        }
-      });
-    });
+    //     defaults: {
+    //         scrollWheelZoom: true
+    //     }
+    //   });
+    // });
+
+
     // $scope.$apply(function() {
     // var x = $scope.longitude || 24
     // if( $scope.longitude || 24)

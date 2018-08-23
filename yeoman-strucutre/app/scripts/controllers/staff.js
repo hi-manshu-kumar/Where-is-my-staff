@@ -74,6 +74,12 @@ angular.module('whereApp')
       $scope.taskName = users.$getRecord(localStorage.keyFB).taskName;
       $scope.taskLat = users.$getRecord(localStorage.keyFB).taskLatitude;
       $scope.taskLng = users.$getRecord(localStorage.keyFB).taskLongitude;
+
+      L.circle([$scope.taskLat, $scope.taskLng], 1000, {
+		color: 'black',
+		fillColor: '#555',
+		fillOpacity: 0.5
+	}).addTo(mymap).bindPopup("<b>Reach Here.</b>").openPopup();
     }
 
     function sendToDb() {
@@ -95,117 +101,6 @@ angular.module('whereApp')
     //   });
     // });
 
-    angular.extend($scope, {
-      osloCenter: {
-        autoDiscover: true,
-        zoom: 10
-      },
-      markers: {
-        taskMarker: {
-            lat: 28.6547555,
-            lng: 77.58810719999999,
-            message: "You have to reach here",
-            focus: true,
-            draggable: false,
-            icon: {},
-        }
-        // marker: {
-        //     lat: $scope.latitude,
-        //     lng: $scope.longitude,
-        //     message: "You are here",
-        //     focus: true,
-        //     draggable: false
-        // }
-      },
-      leafIcon : {
-        iconUrl: '../../../Small-dark-grey-circle.svg.png',
-        // shadowUrl: 'img/leaf-shadow.png',
-        iconSize:     [38, 95], // size of the icon
-        // shadowSize:   [50, 64], // size of the shadow
-        iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-        // shadowAnchor: [4, 62],  // the same for the shadow
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-      },
-      position: {
-          lat: 28.6547555,
-          lng: 77.38890719999999,
-      },
-      defaults: {
-          scrollWheelZoom: true
-      }
-      
-    });    
-
-    $scope.$watch(function($scope){
-      return $scope.latitude;
-    }, function (newValue,oldValue){
-      var x = $scope.longitude || 24
-      if( $scope.longitude || 24)
-      console.log(x);
-
-    //   L.marker([$scope.latitude, $scope.longitude]).bindPopup("<b>You are here!</b>").addTo(mymap).popup();
-
-      angular.extend($scope, {
-        osloCenter: {
-            lat: 28.6547555,
-            lng: 77.38890719999999,
-            zoom: 10
-        },
-        markers: {
-            taskMarker: {
-                lat: 28.6547555,
-                lng: 77.58810719999999,
-                message: "You have to reach here",
-                focus: true,
-                draggable: false,
-                icon: {
-                    iconUrl: '../../images/Small-dark-grey-circle.svg.png',
-                    // shadowUrl: 'img/leaf-shadow.png',
-                    iconSize:     [50, 50], // size of the icon
-                    // shadowSize:   [50, 64], // size of the shadow
-                    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-                    // shadowAnchor: [4, 62],  // the same for the shadow
-                    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-                  }
-            },
-            staffMarker: {
-                lat: $scope.latitude,
-                lng: $scope.longitude,
-                message: "you are here",
-                focus: true,
-                draggable: false,
-                icon: {}
-
-            }
-        },
-        leafIcon : {
-          iconUrl: '../../../Small-dark-grey-circle.svg.png',
-          // shadowUrl: 'img/leaf-shadow.png',
-          iconSize:     [38, 95], // size of the icon
-          // shadowSize:   [50, 64], // size of the shadow
-          iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
-          // shadowAnchor: [4, 62],  // the same for the shadow
-          popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-        },
-        defaults: {
-            scrollWheelZoom: true
-        }
-      });
-    });
-
-    //---------------------leaflet.js
-    // var customPopup = "Mozilla Toronto Offices<br/>";
-    
-    // var customOptions =
-    //     {
-    //     'maxWidth': '500',
-    //     'className' : 'custom'
-    //     }
-
-
-	// L.marker([28.6847555, 77.58810719999999])
-    //     .bindPopup(customPopup,customOptions).addTo(mymap).openPopup();
-
 	var mymap = L.map('mapid').setView([28.6547555, 77.38890719999999], 10);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -216,14 +111,7 @@ angular.module('whereApp')
 		id: 'mapbox.streets'
 	}).addTo(mymap);
 
-	L.circle([28.6547555, 77.58810719999999], 1000, {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5
-	}).addTo(mymap).bindPopup("Reach Here.").openPopup();
-
-
-	var popup = L.popup();
+    var popup = L.popup();
 
 
 });
