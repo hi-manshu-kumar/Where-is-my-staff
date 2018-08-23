@@ -21,7 +21,8 @@
 
         <div class="form-group">
             <label for="">Task Co-ordinates</label>
-            <leaflet markers="markers" center="osloCenter" style="width:660px; height: 300px;"></leaflet>
+            <!-- <leaflet markers="markers" center="osloCenter" style="width:660px; height: 300px;"></leaflet> -->
+            <div id="mapid" ></div>
         </div>
     </div>
     <button class="btn btn-primary center">Complete Task</button> <br> 
@@ -30,6 +31,7 @@
         <div>
             <button class="btn btn-success " ng-click="callGeoLo()">Upload Position</button>
             <button class="btn btn-success">Upload Photo</button>
+            <!-- <button ng-click="markers.taskMarker.icon=leafIcon">Leaflet Icon</button> -->
         </div>        
     </div>
     <br><br>

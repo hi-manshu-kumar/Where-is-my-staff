@@ -146,7 +146,7 @@ angular.module('whereApp')
             staffMarker: {
                 lat: $scope.latitude,
                 lng: $scope.longitude,
-                message: + $scope.empName + " is here",
+                message: $scope.empName + " is here",
                 focus: true,
                 draggable: false
             }
