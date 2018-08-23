@@ -21,7 +21,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
     <script type="text/javascript" src="../bower_components/angular-ui-map/ui-map.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC61rWT7osQrRX8kHRdNjBu8DVeUZcZTaM&language=en"></script>
-
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
     <script src="https://rawgit.com/nmccready/angular-simple-logger/master/dist/angular-simple-logger.js"></script>
     <script src="http://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script>
@@ -45,6 +45,9 @@
         margin: 0;
         padding: 0;
       }
+      #mapid { height: 480px; }
+      .custom .leaflet-popup-tip, .custom .leaflet-popup-content-wrapper { background: #e93434; color: #ffffff; }
+      .leaflet-map-pane { z-index: 2 !important; } .leaflet-google-layer { z-index: 1 !important; }
     </style>
     <!-- <script src="js/app.js"></script>
     <script src="js/config/config.js"></script>
@@ -98,6 +101,7 @@
         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
     </div>
+
 
     
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
