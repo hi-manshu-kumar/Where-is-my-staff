@@ -114,6 +114,7 @@ angular.module('whereApp')
     var popup = L.popup();
 
 // --------------------------------------------------------------verification of position
+    var state = 0 ;
     $scope.verify = function(){
         // calcDist();
         console.log($scope.latitude, $scope.longitude, $scope.taskLat, $scope.taskLng);
@@ -135,12 +136,22 @@ angular.module('whereApp')
         // alert(`The distance is ${d} km.`);
         if(d<1){
             alert(`Task Succesfull`);
+            state = 1;
+            updateStatus(state);
         }
         else{
-            alert(`task unsuccesfull`);
+            alert(`Task unsuccesfull`);
+            state = 0;
+            updateStatus(state);
         }
     }
     function deg2rad(deg) {
         return deg * (Math.PI/180)
+    }
+
+    function updateStatus(state) {
+        const recordPosition = users.$indexFor(localStorage.keyFB);
+        users[recordPosition].status = state;
+        users.$save(recordPosition);
     }
 });

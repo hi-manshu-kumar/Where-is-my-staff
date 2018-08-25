@@ -72,7 +72,6 @@ angular.module('whereApp')
         console.log(a,b);
         // console.log(a.$id,users.$getRecord(a.$id));
         $scope.id =a.$id;
-        $scope.msg = "inside show details";
         $scope.empName = users.$getRecord(a.$id).name;
         $scope.empEmail = users.$getRecord(a.$id).email;
         $scope.empUserid = users.$getRecord(a.$id).userid;
@@ -127,6 +126,7 @@ angular.module('whereApp')
         users[userEntry].taskDate = $scope.taskDate.toString();
         users[userEntry].taskLatitude = $scope.position.lat;
         users[userEntry].taskLongitude = $scope.position.lng;
+        users[recordPosition].status = 0;
         users.$save(userEntry).then(data => {
           alert("New Task succesfully added");
         });
@@ -255,4 +255,6 @@ angular.module('whereApp')
                 $scope.position.lng = args.model.lng;
             });      
    
+
+    
 }]);
