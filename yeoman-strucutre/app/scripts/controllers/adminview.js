@@ -254,5 +254,5 @@ angular.module('whereApp')
                 $scope.position.lat = args.model.lat;
                 $scope.position.lng = args.model.lng;
             });      
-    
+   
 }]);
