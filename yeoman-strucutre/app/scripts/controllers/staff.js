@@ -103,7 +103,7 @@ angular.module('whereApp')
 
 	var mymap = L.map('mapid').setView([28.6547555, 77.38890719999999], 10);
 
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -132,7 +132,13 @@ angular.module('whereApp')
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
         var d = R * c; // Distance in km
         
-        alert(`The distance is ${d} km.`);
+        // alert(`The distance is ${d} km.`);
+        if(d<1){
+            alert(`Task Succesfull`);
+        }
+        else{
+            alert(`task unsuccesfull`);
+        }
     }
     function deg2rad(deg) {
         return deg * (Math.PI/180)
