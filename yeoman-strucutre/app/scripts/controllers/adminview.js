@@ -8,7 +8,7 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('AdminviewCtrl',['$scope','$firebaseArray','$localStorage','$location',function($scope,$firebaseArray,$localStorage,$location){
+  .controller('AdminviewCtrl',['$scope','$firebaseArray','$localStorage','$location','$timeout',function($scope,$firebaseArray,$localStorage,$location,$timeout){
     dbOperations.init();
     redirect();
     function redirect(){
@@ -253,8 +253,27 @@ angular.module('whereApp')
     $scope.$on("leafletDirectiveMarker.dragend", function(event, args){
                 $scope.position.lat = args.model.lat;
                 $scope.position.lng = args.model.lng;
-            });      
+    });      
    
-
+    $scope.$watch("empName", function (newValue, oldValue) {
+        $timeout(function() {
+        //   $('.open-popup-link').magnificPopup({
+        //        type:'inline',
+        //        midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        //     //   titleSrc: function(item){
+        //     //     return item.el.attr('title');
+        //     //  }
+        //    });
+        $('.open-popup-link').magnificPopup({
+            removalDelay: 500, //delay removal by X to allow out-animation
+            callbacks: {
+              beforeOpen: function() {
+                 this.st.mainClass = this.st.el.attr('data-effect');
+              }
+            },
+            midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+          });
+        });
+      });
     
 }]);

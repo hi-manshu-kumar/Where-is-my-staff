@@ -29,7 +29,7 @@
                         <!-- users.$save(user) -->
                         <td><button class="btn btn-danger" ng-click=users.$remove(user)>Delete</button></td>
                         <td>
-                            <button class="btn btn-secondary" ng-click="showDetails(user,users)">Assign Task</button>
+                            <button class="btn btn-secondary" ng-click="showDetails(user,users)">View Details</button>
                         </td>
                     </tr>
                 </tbody>
@@ -65,11 +65,13 @@
             </div>
         </div> -->
         <!-- <leaflet markers="markersStaff" center="osloCenter" style="width:300px; height: 300px;"></leaflet> -->
+        <a href="#openPopup" class="open-popup-link" data-effect="mfp-3d-unfold"> <button class="btn btn-secondary">Assign Task</button> </a>
     </div>
     <leaflet markers="markersStaff" center="osloCenter" style="width:660px; height: 300px;"></leaflet>
 
 </div> 
 <br> <br>
+<div class="white-popup mfp-hide mfp-with-anim "  id="openPopup">
 <fieldset >
     <legend><h3>Assign task</h3> </legend>
     
@@ -110,6 +112,7 @@
         </div>
         <button class="btn btn-success right" ng-click="setTask(user)">Submit</button>
     </form> 
-</fieldset>  
+</fieldset> 
+</div>
 
 <br><br>
