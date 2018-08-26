@@ -8,59 +8,84 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> -->
+
+    <!-- header-footer css file -->
+    <!-- Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i|Montserrat:400,700" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <link href="styles/home/animate.css" rel="stylesheet" type="text/css"/>
+    <link href="styles/home/themify.css" rel="stylesheet" type="text/css"/>
+    <link href="styles/home/scrollbar.min.css" rel="stylesheet" type="text/css"/> 
+    <link href="styles/home/magnific-popup.css" rel="stylesheet" type="text/css"/>
+    <link href="styles/home/swiper.min.css" rel="stylesheet" type="text/css"/>
+    <link href="styles/home/cubeportfolio.min.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="styles/home/style.css">
+    <link rel="stylesheet" href="styles/home/global.css">
+    <!-- / header-footer css file -->
+    <!-- login-reg css file -->
+    <link rel="stylesheet" href="styles/design.css">
+    <!-- / login-reg css file  -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.19/angular-ui-router.js"></script> -->
+       
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="scripts/utils/angular-leaflet-directive.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+    <script src="scripts/app.js"></script>
+    <script src="scripts/config/firebaseconfig.js"></script>
+    <script src="scripts/utils/db.js"></script>  
+    <script src="scripts/services/loginFactory.js"></script> 
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/adminview.js"></script>
+    <script src="scripts/config/config.js"></script>
+        
     <!-- endbuild -->
+    <script src="scripts/utils/home/jquery.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.migrate.min.js"></script>
+    <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+      <script src="styles/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.smooth-scroll.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.back-to-top.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.scrollbar.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.magnific-popup.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/swiper.jquery.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/waypoint.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/counterup.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.cubeportfolio.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.parallax.min.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsXUGTFS09pLVdsYEE9YrO2y4IAncAO2U"></script>
+      <script type="text/javascript" src="scripts/utils/home/jquery.wow.min.js"></script>
+      <!-- General Components and Settings -->
+      <script type="text/javascript" src="scripts/utils/home//global/global.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home//global/header-sticky.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home//global/scrollbar.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home//global/magnific-popup.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home//global/swiper.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home//global/counter.min.js"></script>
+      <!-- <script type="text/javascript" src="scripts/utils/home//global/portfolio-3-col.min.js"></script> -->
+      <script type="text/javascript" src="scripts/utils/home//global/parallax.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home//global/google-map.min.js"></script>
+      <script type="text/javascript" src="scripts/utils/home//global/wow.min.js"></script>
+      <!--========== END JAVASCRIPTS ==========-->
+   
   </head>
-  <body ng-app="staffApp">
-    <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">staff</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
-
+  <body ng-app="whereApp">
+    <ui-view></ui-view>      
+      
+      
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+     <!-- <script>
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
@@ -68,24 +93,23 @@
 
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
-    </script>
+    </script> -->
 
-    <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script> -->
     <!-- endbower -->
-    <!-- endbuild -->
+    
+    
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/welcome.js"></script>
+        
+        <!-- 
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/adminview.js"></script>
+        <script src="scripts/services/aboutfactory.js"></script> -->
         <!-- endbuild -->
 </body>
 </html>

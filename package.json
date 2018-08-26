@@ -1,5 +1,5 @@
 {
-  "name": "staff",
+  "name": "where",
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
@@ -39,5 +39,9 @@
   },
   "scripts": {
     "test": "karma start test\\karma.conf.js"
+  },
+  "dependencies": {
+    "angular-leaflet-directive": "^0.10.0",
+    "angular-ui-router": "^1.0.19"
   }
 }

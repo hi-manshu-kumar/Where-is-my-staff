@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name staffApp.controller:MainCtrl
+ * @name whereApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the staffApp
+ * Controller of the whereApp
  */
-angular.module('staffApp')
+angular.module('whereApp')
   .controller('MainCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',

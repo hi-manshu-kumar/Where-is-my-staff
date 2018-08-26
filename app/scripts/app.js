@@ -1,38 +1,38 @@
-'use strict';
+
+    var whereApp = angular.module('whereApp', ['ui.router','firebase','ngStorage','leaflet-directive']);
 
 /**
  * @ngdoc overview
- * @name staffApp
+ * @name whereApp
  * @description
- * # staffApp
+ * # whereApp
  *
  * Main module of the application.
  */
-angular
-  .module('staffApp', [
-    'ngResource',
-    'ngRoute',
-    'ngSanitize'
-  ])
-  .config(function ($routeProvider, $locationProvider) {
-    $locationProvider.hashPrefix('');  
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/welcome', {
-        templateUrl: 'views/welcome.html',
-        controller: 'WelcomeCtrl',
-        controllerAs: 'welcome'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+// angular
+//   .module('whereApp', [
+//     'ngRoute','firebase','ngStorage','leaflet-directive'
+//   ])
+//   .config(function ($routeProvider,$locationProvider) {
+//     $locationProvider.hashPrefix('');
+//     $routeProvider
+//       .when('/', {
+//         templateUrl: 'views/main.html',
+//         controller: 'MainCtrl',
+//         controllerAs: 'main'
+//       })
+//       .when('/login', {
+//         templateUrl: 'views/login.html',
+//         controller: 'LoginCtrl',
+//         controllerAs: 'login'
+//       })
+//       .when('/admin', {
+//         templateUrl: 'views/adminview.html',
+//         controller: 'AdminviewCtrl',
+//         controllerAs: 'Adminview'
+//       })
+//       .otherwise({
+//         redirectTo: '/'
+//       });
+//   });
+

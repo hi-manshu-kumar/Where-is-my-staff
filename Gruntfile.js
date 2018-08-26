@@ -1,4 +1,4 @@
-// Generated on 2018-07-15 using generator-angular 0.16.0
+// Generated on 2018-07-17 using generator-angular 0.16.0
 'use strict';
 
 // # Globbing
@@ -338,7 +338,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'staffApp',
+          module: 'whereApp',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
