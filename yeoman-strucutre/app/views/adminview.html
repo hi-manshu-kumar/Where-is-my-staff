@@ -29,7 +29,7 @@
                         <!-- users.$save(user) -->
                         <td><button class="btn btn-danger" ng-click=users.$remove(user)>Delete</button></td>
                         <td>
-                            <button class="btn btn-secondary" ng-click="showDetails(user,users)">View Details</button>
+                            <button class="btn btn-secondary view-details" ng-click="showDetails(user,users)" >View Details</button>
                         </td>
                     </tr>
                 </tbody>
@@ -38,17 +38,36 @@
         </div>
         
 </div>
-<div class="clearfix">
-    <div class="left half"   >
+<div class="" id="emp-details" style="opacity: 0; height: 0;">
+    <div class="half"   >
     <h3>Employee Details</h3>
-    
         
+        <div class="details-container">
+            <div class="circle-image">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&h=350" alt="">
+            </div>
+            <div class="details">
+                <div> <h4>{{empName}}</h4> </div> 
+                <div>{{empEmail}}</div>
+                <ul id="first">
+                    <li>UserID</li>
+                    <li>Position</li>
+                    <li> Task Status </li>
+                </ul>
+                <ul id="second">
+                    <li>  <span>{{empUserid}}</span></li>
+                    <li>  <span>{{empType}}</span></li>
+                    <li><span>{{status}} </span></li>
+                </ul>
+            </div>
+        </div>
+
         Name : {{empName}}<br> 
         Email : {{empEmail}}<br>
         UserID: {{empUserid}}<br>
         Type:  {{empType}}<br>
     </div>        
-    <div class="right ">
+    <div class="">
         <!-- <div id="map"></div> -->
         <!-- <div id="dvMap" style="width: 300px; height: 400px">
         </div> -->
@@ -71,7 +90,7 @@
 
 </div> 
 <br> <br>
-<div class="white-popup mfp-hide mfp-with-anim "  id="openPopup">
+<div class="white-popup  mfp-with-anim "  id="openPopup" style="opacity: 0; height: 0;">
 <fieldset >
     <legend><h3>Assign task</h3> </legend>
     
@@ -102,7 +121,7 @@
         
         <div class="form-group">
             <label for="">Task Co-ordinates</label>
-            <leaflet markers="markers" event-broadcast="events" center="osloCenter" style="width:660px; height: 300px;"></leaflet>
+            <leaflet markers="markers" event-broadcast="events" center="osloCenter" style="width:inherit; height: 300px; display: block;"></leaflet>
             <!-- {{taskLongitude}}
             {{taskLatitude}} <br> -->
 

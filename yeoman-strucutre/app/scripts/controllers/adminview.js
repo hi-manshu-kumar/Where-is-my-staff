@@ -78,6 +78,7 @@ angular.module('whereApp')
         $scope.empType = users.$getRecord(a.$id).type;
         $scope.latitude = users.$getRecord(a.$id).latitude;
         $scope.longitude = users.$getRecord(a.$id).longitude;
+        $scope.status = users.$getRecord(a.$id).status;
 
         angular.extend($scope, {
             osloCenter: {
@@ -229,7 +230,9 @@ angular.module('whereApp')
 
       angular.extend($scope, {
           osloCenter: {
-            autoDiscover: true,
+            lat: 28.6547555,
+            lng: 77.38890719999999,
+            // autodiscover: true,
             zoom: 10
           },
           markers: {
@@ -249,7 +252,7 @@ angular.module('whereApp')
               }
           }
       });
-
+    
     $scope.$on("leafletDirectiveMarker.dragend", function(event, args){
                 $scope.position.lat = args.model.lat;
                 $scope.position.lng = args.model.lng;
@@ -264,6 +267,12 @@ angular.module('whereApp')
         //     //     return item.el.attr('title');
         //     //  }
         //    });
+        $(".view-details").click(function(){
+            $("#emp-details").css({"opacity": "1", "height" : "inherit"});
+        });
+        $(".open-popup-link").click(function(){
+            $("#openPopup").removeClass("hide").addClass("show").css({"opacity": "1", "height" : "inherit"});
+        });
         $('.open-popup-link').magnificPopup({
             removalDelay: 500, //delay removal by X to allow out-animation
             callbacks: {

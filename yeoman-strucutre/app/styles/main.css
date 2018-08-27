@@ -87,7 +87,7 @@ body {
   background: #FFF;
   padding: 20px;
   width:auto;
-  max-width: 500px;
+  max-width: 600px;
   margin: 20px auto;
 }
 
@@ -122,4 +122,16 @@ body {
 }
 .mfp-3d-unfold.mfp-removing.mfp-bg {
   opacity: 0;
+}
+
+.hide{
+    display: none;
+}
+
+.red{
+    background-color: red;
+}
+
+.show{
+    display: block;
 }
