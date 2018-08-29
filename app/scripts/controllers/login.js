@@ -77,7 +77,7 @@ angular.module('whereApp')
         if (data.type=="Admin")
         {
             $rootScope.$apply(function() {
-                $location.path ('home/admin');
+                $location.path ('/admin');
             });
         }
         if (data.type=="Staff")
