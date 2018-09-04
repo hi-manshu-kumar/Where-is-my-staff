@@ -159,7 +159,7 @@ angular.module('whereApp')
         $("#uploadButton").show();
     });
 
-    function uploadFile(){
+    $scope.uploadFile = function(){
         var storageRef = firebase.storage().ref('/staffImage/' + filename);
         var filename = selectedFile.name;
         var uploadTask = storageRef.put(selectedFile);
@@ -184,8 +184,17 @@ angular.module('whereApp')
           }, function() {
             // Handle successful uploads on complete
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+
             uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-              console.log('File available at', downloadURL);
+                // var postKey = firebase.database().ref().child('users/' + localStorage.keyFB ).push().key;
+                var updates = {};
+                var postData = {
+                    url: downloadURL,
+                    user: localStorage.keyFB
+                };
+                updates['/users/' + localStorage.keyFB+'/posts' ] = postData;
+                firebase.database().ref().update(updates);            
+                console.log('File available at', downloadURL);
             });
           });
 
