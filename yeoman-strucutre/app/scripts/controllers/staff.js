@@ -8,7 +8,7 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation, $firebaseArray,) {
+  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation, $firebaseArray, $timeout) {
     redirect();
     dbOperations.init();
     $scope.position;
@@ -67,9 +67,9 @@ angular.module('whereApp')
     const recordPosition = users.$indexFor(localStorage.keyFB);
     
     $scope.loadTask = function () {
+      $scope.myvar = true;
       const taskDatee = users.$getRecord(localStorage.keyFB).taskDate;
-      var q = new Date(taskDatee)
-      console.log( q);
+      var q = new Date(taskDatee);
       $scope.taskDate = q ;
       $scope.taskName = users.$getRecord(localStorage.keyFB).taskName;
       $scope.taskLat = users.$getRecord(localStorage.keyFB).taskLatitude;
@@ -136,12 +136,12 @@ angular.module('whereApp')
         // alert(`The distance is ${d} km.`);
         if(d<1){
             alert(`Task Succesfull`);
-            state = 1;
+            state = "Complete";
             updateStatus(state);
         }
         else{
             alert(`Task unsuccesfull`);
-            state = 0;
+            state = "InComplete";
             updateStatus(state);
         }
     }
@@ -149,9 +149,72 @@ angular.module('whereApp')
         return deg * (Math.PI/180)
     }
 
+    $(document).ready(function(){
+        $("#uploadButton").hide();
+    })
+
+    var selectedFile ;    
+    $("#file").on("change", function(event){
+        selectedFile = event.target.files[0];
+        $("#uploadButton").show();
+    });
+
+    function uploadFile(){
+        var storageRef = firebase.storage().ref('/staffImage/' + filename);
+        var filename = selectedFile.name;
+        var uploadTask = storageRef.put(selectedFile);
+        // ref.put(file).then(function(snapshot) {
+        //     console.log('Uploaded a blob or file!');
+        //   });
+        uploadTask.on('state_changed', function(snapshot){
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            console.log('Upload is ' + progress + '% done');
+            switch (snapshot.state) {
+              case firebase.storage.TaskState.PAUSED: // or 'paused'
+                console.log('Upload is paused');
+                break;
+              case firebase.storage.TaskState.RUNNING: // or 'running'
+                console.log('Upload is running');
+                break;
+            }
+          }, function(error) {
+            // Handle unsuccessful uploads
+          }, function() {
+            // Handle successful uploads on complete
+            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+            uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+              console.log('File available at', downloadURL);
+            });
+          });
+
+    }
+
     function updateStatus(state) {
         const recordPosition = users.$indexFor(localStorage.keyFB);
         users[recordPosition].status = state;
         users.$save(recordPosition);
     }
+
+    $scope.$watch("taskDate", function (newValue, oldValue) {
+      $timeout(function() {
+      //   $('.open-popup-link').magnificPopup({
+      //        type:'inline',
+      //        midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+      //     //   titleSrc: function(item){
+      //     //     return item.el.attr('title');
+      //     //  }
+      //    })
+      $('.open-popup-link').magnificPopup({
+          removalDelay: 500, //delay removal by X to allow out-animation
+          callbacks: {
+            beforeOpen: function() {
+               this.st.mainClass = this.st.el.attr('data-effect');
+            }
+          },
+          midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+        });
+      });
+    });
 });

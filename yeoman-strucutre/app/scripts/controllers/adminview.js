@@ -67,10 +67,15 @@ angular.module('whereApp')
     //   }
   
     };
+    
     //--------------------- employee details here--------------------------------
     $scope.showDetails = (a,b) => {
         console.log(a,b);
+        $scope.showHideDetails = true;
         // console.log(a.$id,users.$getRecord(a.$id));
+        if(users.$getRecord(a.$id).type == "Staff"){
+            $scope.myTask = true;
+        }
         $scope.id =a.$id;
         $scope.empName = users.$getRecord(a.$id).name;
         $scope.empEmail = users.$getRecord(a.$id).email;
@@ -79,7 +84,7 @@ angular.module('whereApp')
         $scope.latitude = users.$getRecord(a.$id).latitude;
         $scope.longitude = users.$getRecord(a.$id).longitude;
         $scope.status = users.$getRecord(a.$id).status;
-
+    
         angular.extend($scope, {
             osloCenter: {
                 autoDiscover: true,
@@ -116,18 +121,21 @@ angular.module('whereApp')
                 scrollWheelZoom: true
             }
           });
+          if(users.$getRecord(a.$id).type == "Admin")
+            {
+                $scope.myTask = false;
+            }
     }
     // -------------------------Assign Task here---------------------------------
     $scope.date = new Date();
     $scope.setTask = function() {
-
         const userEntry = users.$indexFor($scope.id);
         console.log($scope.taskDate.toString(),$scope.taskName);
         users[userEntry].taskName = $scope.taskName;
         users[userEntry].taskDate = $scope.taskDate.toString();
         users[userEntry].taskLatitude = $scope.position.lat;
         users[userEntry].taskLongitude = $scope.position.lng;
-        users[recordPosition].status = 0;
+        users[recordPosition].status = "Incomplete";
         users.$save(userEntry).then(data => {
           alert("New Task succesfully added");
         });
@@ -266,10 +274,7 @@ angular.module('whereApp')
         //     //   titleSrc: function(item){
         //     //     return item.el.attr('title');
         //     //  }
-        //    });
-        $(".view-details").click(function(){
-            $("#emp-details").css({"opacity": "1", "height" : "inherit"});
-        });
+        //    })
         $(".open-popup-link").click(function(){
             $("#openPopup").removeClass("hide").addClass("show").css({"opacity": "1", "height" : "inherit"});
         });

@@ -14,8 +14,9 @@
                         <th>UserID</th>
                         <th>Type</th>
                         <th>Enable</th>
-                        <th>edit</th>
-                        <th>Delete Record</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <th>Details</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,36 +39,45 @@
         </div>
         
 </div>
-<div class="" id="emp-details" style="opacity: 0; height: 0;">
-    <div class="half"   >
+<div class=""
+
+ ng-show="showHideDetails" ng-init="showHideDetails=false">
+    <div>
     <h3>Employee Details</h3>
-        
+        <div class="pad">
         <div class="details-container">
             <div class="circle-image">
                 <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&h=350" alt="">
             </div>
             <div class="details">
-                <div> <h4>{{empName}}</h4> </div> 
+                <div class="details-name">{{empName}} </div> 
                 <div>{{empEmail}}</div>
-                <ul id="first">
-                    <li>UserID</li>
-                    <li>Position</li>
-                    <li> Task Status </li>
-                </ul>
-                <ul id="second">
-                    <li>  <span>{{empUserid}}</span></li>
-                    <li>  <span>{{empType}}</span></li>
-                    <li><span>{{status}} </span></li>
-                </ul>
+                <table >
+                    <tr id="first">
+                        <td>UserID</td>
+                        <td>Position</td>
+                        <td>Task Status</td>
+                    </tr>
+                    <tr class="second">
+                        <td>{{empUserid}}</td>
+                        <td>{{empType}}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                </table>
+
+                <div class="assign-button">
+                <a href="#openPopup" class="open-popup-link" data-effect="mfp-3d-unfold"> <button class="btn btn-primary" ng-init="myTask=true" ng-show="myTask">Assign Task</button> </a>
+                </div>
+            </div>
             </div>
         </div>
+    </div>
 
-        Name : {{empName}}<br> 
+        <!-- Name : {{empName}}<br> 
         Email : {{empEmail}}<br>
         UserID: {{empUserid}}<br>
-        Type:  {{empType}}<br>
-    </div>        
-    <div class="">
+        Type:  {{empType}}<br> -->     
+    <div class="" >
         <!-- <div id="map"></div> -->
         <!-- <div id="dvMap" style="width: 300px; height: 400px">
         </div> -->
@@ -84,14 +94,14 @@
             </div>
         </div> -->
         <!-- <leaflet markers="markersStaff" center="osloCenter" style="width:300px; height: 300px;"></leaflet> -->
-        <a href="#openPopup" class="open-popup-link" data-effect="mfp-3d-unfold"> <button class="btn btn-secondary">Assign Task</button> </a>
+        
     </div>
-    <leaflet markers="markersStaff" center="osloCenter" style="width:660px; height: 300px;"></leaflet>
+    <leaflet ng-show="myTask" markers="markersStaff" center="osloCenter" style="width:660px; height: 300px;"></leaflet>
 
 </div> 
 <br> <br>
-<div class="white-popup  mfp-with-anim "  id="openPopup" style="opacity: 0; height: 0;">
-<fieldset >
+<div class="white-popup  mfp-with-anim "  id="openPopup" style="opacity: 0; height: 0;" >
+<fieldset style="overflow-y: hidden;">
     <legend><h3>Assign task</h3> </legend>
     
     <h5>
