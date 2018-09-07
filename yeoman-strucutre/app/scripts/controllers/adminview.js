@@ -84,6 +84,7 @@ angular.module('whereApp')
         $scope.latitude = users.$getRecord(a.$id).latitude;
         $scope.longitude = users.$getRecord(a.$id).longitude;
         $scope.status = users.$getRecord(a.$id).status;
+        $scope.photo = users.$getRecord(a.$id).posts.url;
     
         angular.extend($scope, {
             osloCenter: {

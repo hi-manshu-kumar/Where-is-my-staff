@@ -7,7 +7,7 @@
         <h2>
             View Task
         </h2>
-        <button ng-click="loadTask()" class="btn btn-primary center">Load Task</button> <br> <br>
+        <button ng-click="loadTask()" class="btn btn-primary center" id="loadTask">Load Task</button> <br> <br>
         <div ng-show="myvar">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Reach Cannaught Palace" disabled ng-model="taskName">
@@ -43,10 +43,10 @@
      
     <div class="white-popup mfp-hide" id="openPopup">
         <label for="" class="Upload-group">
-            Upload File
+            <h2>Upload File</h2> <br> <br>
             <input type="file" class="upload-group" id="file">
         </label>
-        <button type="button" class="btn btn-primary" id="uploadButton" ng-click="uploadFile()">Submit</button>
+        <button type="button" class="btn btn-primary right" id="uploadButton" ng-click="uploadFile()">Submit</button>
     </div>
     
     <br><br>

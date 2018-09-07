@@ -228,3 +228,22 @@ leaflet{
 .pad{
     margin: 10% 8%;
 }
+
+/* table */
+/* .table{
+    width: 80%;
+
+    margin-bottom: 20px;
+
+    margin-left: 10%;
+
+    margin-right: 10%;
+} */
+
+#employeedetails{
+    width: 99%;
+}
+
+#loadTask{
+    margin-top: 7%;
+}
