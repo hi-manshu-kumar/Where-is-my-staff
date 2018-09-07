@@ -140,6 +140,7 @@ angular.module('whereApp')
         localStorage.type = data.type;
     }).catch(err => {
         console.log(err);
+        alert("Username and password didn't match.");
         // document.querySelector("#message").innerHTML = "Invalid User id or password";
     });
     

@@ -135,7 +135,7 @@ angular.module('whereApp')
         users[userEntry].taskDate = $scope.taskDate.toString();
         users[userEntry].taskLatitude = $scope.position.lat;
         users[userEntry].taskLongitude = $scope.position.lng;
-        users[recordPosition].status = "Incomplete";
+        users[userEntry].status = "Incomplete";
         users.$save(userEntry).then(data => {
           alert("New Task succesfully added");
         });

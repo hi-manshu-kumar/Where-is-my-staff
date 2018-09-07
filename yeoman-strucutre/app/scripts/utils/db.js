@@ -47,7 +47,7 @@ const dbOperations= {
                     var objI =obj[key];
                     console.log(userid, objI.userid, pwd, objI.password,objI)
                     if(userid == objI.userid && pwd== objI.password){
-                        alert("yippee you are logged in");
+                        //alert("yippee you are logged in");
                         // console.log(key);
                         localStorage.setItem("keyFB", key);
                         console.log(localStorage.getItem("keyFB"));
