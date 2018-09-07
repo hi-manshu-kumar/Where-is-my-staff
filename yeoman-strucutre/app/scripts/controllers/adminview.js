@@ -76,6 +76,9 @@ angular.module('whereApp')
         if(users.$getRecord(a.$id).type == "Staff"){
             $scope.myTask = true;
         }
+        if(users.$getRecord(a.$id).type == "Admin"){
+            $scope.myTask = false;
+        }
         $scope.id =a.$id;
         $scope.empName = users.$getRecord(a.$id).name;
         $scope.empEmail = users.$getRecord(a.$id).email;

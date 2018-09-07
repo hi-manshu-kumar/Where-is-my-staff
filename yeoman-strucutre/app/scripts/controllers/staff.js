@@ -160,7 +160,7 @@ angular.module('whereApp')
     });
 
     $scope.uploadFile = function(){
-        var storageRef = firebase.storage().ref('/staffImage/' + filename);
+        var storageRef = firebase.storage().ref('/staffImage/' + filename + localStorage.keyFB );
         var filename = selectedFile.name;
         var uploadTask = storageRef.put(selectedFile);
         // ref.put(file).then(function(snapshot) {
@@ -195,7 +195,10 @@ angular.module('whereApp')
                 updates['/users/' + localStorage.keyFB+'/posts' ] = postData;
                 firebase.database().ref().update(updates);            
                 console.log('File available at', downloadURL);
-            });
+                alert("File Uploaded Successfully")
+            }).catch((err) => {
+              alert("File didn't uploaded. Try Again!!!");
+            }) ;
           });
 
     }

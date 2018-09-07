@@ -76,7 +76,10 @@ angular.module('whereApp')
           latitude:"",
           longitude:"",
           taskName:"",
-          taskDate:""
+          taskDate:"",
+          taskLatitude:"",
+          taskLongitude:"",
+          status:"Not Set"
       }).then(function(userRef){
           // var id = userRef.key();
           // console.log("added user ...");
