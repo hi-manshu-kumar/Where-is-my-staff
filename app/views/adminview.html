@@ -1,7 +1,15 @@
-<div class="row" >
-        <div class="col-md-6">
+<br><br><br><br>
+
+<div class="well">
+    Welcome {{username}} 
+    <!-- Your id is {{id}} -->
+</div>
+
+<div class="row clearfix" >
+        <div class="col-md-12 col-sm-12">
             <h2>Staff List</h2>
-            <table class="table table-striped">
+            <div class="table-responsive">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -9,8 +17,9 @@
                         <th>UserID</th>
                         <th>Type</th>
                         <th>Enable</th>
-                        <th>edit</th>
-                        <th>Delete Record</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <th>Details</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,20 +32,118 @@
                         <td><input type="checkbox" name="x" value="{{user.enable}}" ng-model="user.enable"  ng-change="users.$save(user)"></td>
                         <!-- users.$save(user) -->
                         <td><button class="btn btn-danger" ng-click=users.$remove(user)>Delete</button></td>
+                        <td>
+                            <button class="btn btn-secondary view-details" ng-click="showDetails(user,users)" >View Details</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="right btn btn-success" ng-click="saveData(user)">Save Data</button>
+            </div>
+            <button class="right btn btn-success" ng-click="saveData(user,users)">Save Data</button>
         </div>
         
 </div>
-<div>
+<div class="employeeDetails" ng-show="showHideDetails" ng-init="showHideDetails=false" style="width: inherit;">
+    <div>
     <h3>Employee Details</h3>
-    {{msg}} <br>
-    Name : {{empName}}<br> 
-    Email : {{empEmail}}<br>
-    UserID: {{empUserid}}<br>
-    Type:  {{empType}}<br>
+        <div class="pad">
+        <div class="details-container">
+            <div class="circle-image">
+                <img ng-src="{{photo}}" alt="">
+            </div>
+            <div class="details">
+                <div class="details-name">{{empName}} </div> 
+                <div>{{empEmail}}</div>
+                <table >
+                    <tr id="first">
+                        <td>UserID</td>
+                        <td>Position</td>
+                        <td>Task Status</td>
+                    </tr>
+                    <tr class="second">
+                        <td>{{empUserid}}</td>
+                        <td>{{empType}}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                </table>
+
+                <div class="assign-button">
+                <a href="#openPopup" class="open-popup-link" data-effect="mfp-3d-unfold"> <button class="btn btn-primary" ng-init="myTask=true" ng-show="myTask">Assign Task</button> </a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Name : {{empName}}<br> 
+        Email : {{empEmail}}<br>
+        UserID: {{empUserid}}<br>
+        Type:  {{empType}}<br> -->     
+    <div class="" >
+        <!-- <div id="map"></div> -->
+        <!-- <div id="dvMap" style="width: 300px; height: 400px">
+        </div> -->
+        <!-- <div id="map_canvas" >
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
+                <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+            <div ng-cloak>
+                <ul>
+                    <li>coords update ctr: {{coordsUpdates}}</li>
+                    <li>dynamic move ctr: {{dynamicMoveCtr}}</li>
+                </ul>
+            </div>
+        </div> -->
+        <!-- <leaflet markers="markersStaff" center="osloCenter" style="width:300px; height: 300px;"></leaflet> -->
+        
+    </div>
+    <leaflet ng-show="myTask" markers="markersStaff" center="osloCenter" style="width: inherit; height: 24.75em;"></leaflet>
 
 </div> 
+<br> <br>
+<div class="white-popup  mfp-with-anim "  id="openPopup" style="opacity: 0; height: 0;" >
+<fieldset style="overflow-y: hidden;">
+    <legend><h3>Assign task</h3> </legend>
+    
+    <h5>
+    Employee : {{empName}} <br> <br>
+    Today's Date : {{date|date:'dd-MM-yyyy'}}          <br> <br>
+    </h5>
+    <form action="" class="well clearfix" >
+        <div class="form-group">
+            <label for="">Task</label>
+            <input type="text"  class="form-control" placeholder="Enter task" ng-model="taskName" required>  <br> 
+        </div>
+
+        <div class="form-group">
+            <label for="">Task to be completed on</label>
+            <input type="date" placeholder="Please specify a date"
+            onClick="$(this).removeClass('placeholderclass')"
+            class="form-control dateclass placeholderclass"
+            ng-model="taskDate" required> <br>
+        </div>
+
+        <div class="form-group">
+            <label for="">Task to be completed in</label>
+            <input type="time"  placeholder="Please specify a time"
+            onClick="$(this).removeClass('placeholderclass')"
+            class="form-control dateclass placeholderclass" >
+        </div> 
+        
+        <div class="form-group">
+            <label for="">Task Co-ordinates</label>
+            <leaflet markers="markers" event-broadcast="events" center="osloCenter" style="width:inherit; height: 24.75em; display: block;"></leaflet>
+            <!-- {{taskLongitude}}
+            {{taskLatitude}} <br> -->
+
+            {{$scope.latitude}} <br>
+            <!-- <input type="number" ng-model="position.lat">
+            <input type="number" ng-model="position.lng"> -->
+        </div>
+        <button class="btn btn-success right" ng-click="setTask(user)">Submit</button>
+    </form> 
+</fieldset> 
+</div>
+
 <br><br>

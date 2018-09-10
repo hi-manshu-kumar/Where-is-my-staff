@@ -16,7 +16,7 @@ angular.module('whereApp')
   // var ref = new Firebase('https://console.firebase.google.com/project/where-is-my-staff-95951/database/where-is-my-staff-95951/data');
   // $scope.contacts = $firebaseArray(ref);
 
-  
+//   dbOperations.init();
   // var rootRef = $firebaseArray(firebase.database().ref().child('users'));
   var rootRef = firebase.database().ref();    
   var userRef = rootRef.child('users');
@@ -31,12 +31,19 @@ angular.module('whereApp')
       $scope.users=$firebaseArray(userRef);
       $scope.enable = "false";
       $scope.users.$add({
-          name: $scope.name,
-          email:$scope.mail,
-          password:$scope.pwd,
-          userid:$scope.userid,
-          type:$scope.type,
-          enable:$scope.enable
+        name: $scope.name,
+        email:$scope.mail,
+        password:$scope.pwd,
+        userid:$scope.userid,
+        type:$scope.type,
+        enable:$scope.enable,
+        latitude:"",
+        longitude:"",
+        taskName:"",
+        taskDate:"",
+        taskLatitude:"",
+        taskLongitude:"",
+        status:"Not Set"
       }).then(function(userRef){
           // var id = userRef.key();
           // console.log("added user ...");
@@ -87,12 +94,13 @@ angular.module('whereApp')
             });
         }
         
-        console.log("inside then",data.type);
+        // console.log("inside then",data.type);
         $localStorage.type = data.type;
         
         console.log("data is",$localStorage.type,data.type);
     }).catch(err => {
         console.log(err);
+        alert("Username and password didn't match.");
         // document.querySelector("#message").innerHTML = "Invalid User id or password";
     });
     
