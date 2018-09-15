@@ -1,4 +1,4 @@
-// 'use strict';
+ // 'use strict';
 
 /**
  * @ngdoc function
@@ -9,14 +9,14 @@
  *  .controller('AboutCtrl', function () {
  */
 angular.module('whereApp')
-  .controller('LoginCtrl',['$scope','$firebaseArray','loginfactory','$localStorage','$location', '$rootScope', function($scope,$firebaseArray,loginfactory,$localStorage,$location,$rootScope){
+  .controller('LoginCtrl',['$scope','$firebaseArray','loginfactory','$localStorage','$location','$rootScope',function($scope,$firebaseArray,loginfactory,$localStorage,$location,$rootScope){
+    
 
-  
   //-------------------------firebase code here--------------------
   // var ref = new Firebase('https://console.firebase.google.com/project/where-is-my-staff-95951/database/where-is-my-staff-95951/data');
   // $scope.contacts = $firebaseArray(ref);
 
-//   dbOperations.init();
+   dbOperations.init(); 
   // var rootRef = $firebaseArray(firebase.database().ref().child('users'));
   var rootRef = firebase.database().ref();    
   var userRef = rootRef.child('users');
@@ -31,19 +31,19 @@ angular.module('whereApp')
       $scope.users=$firebaseArray(userRef);
       $scope.enable = "false";
       $scope.users.$add({
-        name: $scope.name,
-        email:$scope.mail,
-        password:$scope.pwd,
-        userid:$scope.userid,
-        type:$scope.type,
-        enable:$scope.enable,
-        latitude:"",
-        longitude:"",
-        taskName:"",
-        taskDate:"",
-        taskLatitude:"",
-        taskLongitude:"",
-        status:"Not Set"
+          name: $scope.name,
+          email:$scope.mail,
+          password:$scope.pwd,
+          userid:$scope.userid,
+          type:$scope.type,
+          enable:$scope.enable,
+          latitude:"",
+          longitude:"",
+          taskName:"",
+          taskDate:"",
+          taskLatitude:"",
+          taskLongitude:"",
+          status:"Not Set"
       }).then(function(userRef){
           // var id = userRef.key();
           // console.log("added user ...");
@@ -74,30 +74,37 @@ angular.module('whereApp')
     var userid= $scope.useridtxt;
     var password= $scope.passwordtxt;   
     
-    var pr = dbOperations.match(userid, password)
-    $localStorage.userid=userid;
+    var pr = dbOperations.match(userid, password);
+    // localStorage.setItem("usernameJS",'userid');
+    // console.log(localStorage.getItem("usernameJS"));
+
+    localStorage.usernameJSS = userid;
+    console.log(localStorage.usernameJSS);
+    localStorage.userid=userid;
+
+    // $localStorage.userid=userid;
+    // console.log($localStorage.userid);
     $scope.username=userid;
-    console.log($localStorage.userid,userid);
+    console.log(localStorage.userid,userid);
     
     pr.then(data => {
-        // to use location.path we need to apply $rootScope.$apply
-        if (data.type=="Admin")
+
+        // to use loaction.path we need to apply $rootscope.$apply  
+        if(data.type == "Admin")
         {
-            $rootScope.$apply(function() {
-                $location.path ('/admin');
+            localStorage.AdminName = data.name;
+            $rootScope.$apply(function() {   
+                $location.path ("/admin");
             });
         }
-        if (data.type=="Staff")
+        if(data.type== "Staff")
         {
-            $rootScope.$apply(function() {
-                $location.path ('/staff');
+            localStorage.StaffName = data.name;
+            $rootScope.$apply(function() {   
+                $location.path ("/staff");
             });
         }
-        
-        // console.log("inside then",data.type);
-        $localStorage.type = data.type;
-        
-        console.log("data is",$localStorage.type,data.type);
+        localStorage.type = data.type;
     }).catch(err => {
         console.log(err);
         alert("Username and password didn't match.");

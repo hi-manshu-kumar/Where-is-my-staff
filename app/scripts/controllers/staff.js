@@ -8,16 +8,16 @@
  * Controller of the whereApp
  */
 angular.module('whereApp')
-  .controller('staffCtrl', ['$scope','$firebaseArray','$localStorage','$location','$timeout',function ($scope, $localStorage, $location, geoLocation, $firebaseArray, $timeout) {
-    // redirect();
-    // dbOperations.init();
+  .controller('staffCtrl', function ($scope, $localStorage, $location, geoLocation, $firebaseArray, $timeout) {
+    redirect();
+    dbOperations.init();
     $scope.position;
     $scope.latitude;
     $scope.longitude;
 
     function redirect() {
       if (!localStorage.StaffName) {
-        $location.path('/about');
+        $location.path('/login');
       }
     };
     $scope.id = localStorage.userid;
@@ -229,4 +229,4 @@ angular.module('whereApp')
         });
       });
     });
-}]);
+});

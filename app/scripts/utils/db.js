@@ -34,6 +34,9 @@ const dbOperations= {
                 console.log("Type of", obj.userid);
                 
                 for (let key in obj) {
+                    console.log("key is ",key);
+                    // localStorage.keyFB == key;
+                    // console.log(localStorage.keyFB);
                     console.log(key, " ", obj[key]);
                     console.log(key, " ", obj[key].userid);
                     console.log(key, " ", obj[key].password);
@@ -42,9 +45,12 @@ const dbOperations= {
                     //     alert("yippee");
                     // }
                     var objI =obj[key];
-                    console.log(userid, objI.userid, pwd, objI.password)
+                    console.log(userid, objI.userid, pwd, objI.password,objI)
                     if(userid == objI.userid && pwd== objI.password){
-                        alert("yippee you are logged in");
+                        //alert("yippee you are logged in");
+                        // console.log(key);
+                        localStorage.setItem("keyFB", key);
+                        console.log(localStorage.getItem("keyFB"));
                         resolve(objI);
                     }
                 }
@@ -72,5 +78,5 @@ const dbOperations= {
             document.querySelector('#login').style.display = 'none';            
             console.log("show logout........................... ");
         }
-    } 
+    }    
 }

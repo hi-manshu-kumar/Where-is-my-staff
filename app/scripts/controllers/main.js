@@ -9,9 +9,5 @@
  */
 angular.module('whereApp')
   .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    dbOperations.init();
   });

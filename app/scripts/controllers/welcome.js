@@ -9,9 +9,5 @@
  */
 angular.module('staffApp')
   .controller('WelcomeCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    dbOperations.init();
   });

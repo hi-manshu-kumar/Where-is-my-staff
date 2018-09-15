@@ -22,6 +22,12 @@ whereApp.config(["$stateProvider", "$urlRouterProvider", function($stateProvider
     controller: "LoginCtrl"
   }
 
+  var logoutState = {
+    name: 'logout',
+    template: "",
+    controller: 'LogoutCtrl',
+  }
+
   var aboutState = {
     name: 'about',
     url: '/about',
@@ -51,6 +57,7 @@ whereApp.config(["$stateProvider", "$urlRouterProvider", function($stateProvider
   $stateProvider.state(homeState);  
   $stateProvider.state(registerState);
   $stateProvider.state(loginState);
+  $stateProvider.state(logoutState);
   $stateProvider.state(aboutState);
   $stateProvider.state(contactState);  
 

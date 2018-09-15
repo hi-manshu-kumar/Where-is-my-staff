@@ -10,7 +10,7 @@
 angular.module('whereApp')
   .controller('LogoutCtrl', function ($scope,$localStorage,$location) {
     localStorage.clear();
-    // dbOperations.init();
+    dbOperations.init();
     // $scope.showLogout = 'hidden';
 
     //-----------------------------------to redirect-------------------------

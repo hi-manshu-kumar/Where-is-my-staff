@@ -8,17 +8,16 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
-    <!-- build:css(.tmp) styles/main.css -->
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"> -->
-
+    
     <!-- header-footer css file -->
     <!-- Web Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i|Montserrat:400,700" rel="stylesheet">
 
-    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" /> -->
-    <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="styles/bootstrap/css/bootstrap.min.css"> -->
     <link href="styles/home/animate.css" rel="stylesheet" type="text/css"/>
     <link href="styles/home/themify.css" rel="stylesheet" type="text/css"/>
     <link href="styles/home/scrollbar.min.css" rel="stylesheet" type="text/css"/> 
@@ -31,8 +30,12 @@
     <!-- login-reg css file -->
     <link rel="stylesheet" href="styles/design.css">
     <!-- / login-reg css file  -->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbower -->
     
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.19/angular-ui-router.js"></script> -->
        
@@ -50,7 +53,7 @@
     <script src="http://rawgit.com/angular-ui/angular-google-maps/master/dist/angular-google-maps.js"></script>
 
     <!-- <link rel="stylesheet" href="./styles/magnific-popup.css"> -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
     
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
     <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
@@ -76,10 +79,10 @@
 
 
     <!-- endbuild -->
-    <script src="scripts/utils/home/jquery.min.js"></script>
+    <!-- <script src="scripts/utils/home/jquery.min.js"></script> -->
       <!-- <script type="text/javascript" src="scripts/utils/home/jquery.migrate.min.js"></script> -->
     <!-- <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
-      <script src="styles/bootstrap/js/bootstrap.min.js"></script>
+      <!-- <script src="styles/bootstrap/js/bootstrap.min.js"></script> -->
       <!-- <script type="text/javascript" src="scripts/utils/home/jquery.smooth-scroll.min.js"></script> -->
       <script type="text/javascript" src="scripts/utils/home/jquery.back-to-top.min.js"></script>
       <!-- <script type="text/javascript" src="scripts/utils/home/jquery.scrollbar.min.js"></script> -->
@@ -103,7 +106,7 @@
       <!-- <script type="text/javascript" src="scripts/utils/home//global/google-map.min.js"></script> -->
       <!-- <script type="text/javascript" src="scripts/utils/home//global/wow.min.js"></script> -->
       <!--========== END JAVASCRIPTS ==========-->
-   
+    
   </head>
   <body ng-app="whereApp">
         <header class="navbar-fixed-top s-header js__header-sticky js__header-overlay">
@@ -144,7 +147,8 @@
                             <!-- Menu List -->                                
                             <ul class="list-unstyled s-header__nav-menu">
                                 <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" ui-sref="home">Home</a></li>
-                                <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" ui-sref="login">Login</a></li>
+                                <li class="s-header__nav-menu-item" id="login"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" ui-sref="login">Login</a></li>
+                                <li class="s-header__nav-menu-item" id="logout"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" ui-sref="logout">Logout</a></li>
                                 <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" ui-sref="register">Register</a></li>
                                 <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" ui-sref="about">About</a></li>
                                 <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" ui-sref="contact">Contact</a></li>
@@ -195,7 +199,6 @@
           <div class="row">
               <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
                   <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-                      <li><a class="g-font-size-15--xs g-color--white-opacity" ui-sref="about"></a></li>
                       <li><a class="g-font-size-15--xs g-color--white-opacity" ui-sref="about">About</a></li>
                       <li><a class="g-font-size-15--xs g-color--white-opacity" ui-sref="about">Work</a></li>
                       <li><a class="g-font-size-15--xs g-color--white-opacity" ui-sref="contact">Contact</a></li>
@@ -217,8 +220,8 @@
                   </ul>
               </div>
               <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 s-footer__logo g-padding-y-50--xs g-padding-y-0--md">
-                  <h3 class="g-font-size-18--xs g-color--white">Megakit</h3>
-                  <p class="g-color--white-opacity">We are a creative studio focusing on culture, luxury, editorial &amp; art. Somewhere between sophistication and simplicity.</p>
+                  <h3 class="g-font-size-18--xs g-color--white">Where is my Staff</h3>
+                  <p class="g-color--white-opacity">We are a creative startup focusing on culture, luxury, editorial &amp; art. Somewhere between sophistication and simplicity.</p>
               </div>
           </div>
       </div>
@@ -245,12 +248,7 @@
 <!-- Back To Top -->
 <a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>    
       
-    <!-- bower:js -->
-    <!-- <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script> -->
-    <!-- endbower -->
+    
     
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         
